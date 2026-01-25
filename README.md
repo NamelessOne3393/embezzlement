@@ -2,7 +2,7 @@
 
 ## Team Name:
 * Team member 1: Keegan
-* Team member 2: [only name]
+* Team member 2: Harsh 
 
 ## Project proposal:
 
