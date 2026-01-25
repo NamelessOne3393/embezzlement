@@ -1,7 +1,7 @@
 # W26-COSC-210
 
 ## Team Name:
-* Team member 1: [only name]
+* Team member 1: Keegan
 * Team member 2: [only name]
 
 ## Project proposal:
