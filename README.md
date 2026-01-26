@@ -1,4 +1,4 @@
-# W26-COSC-210
+# Embezzlement
 
 ## Team Name:
 * Team member 1: Keegan
@@ -17,9 +17,9 @@ The player will recieve money and use it to buy assets that passively earn more 
 
 the player will have access to a limited number of choices at a time for purchasing new assets, but can own an arbitrary number of assets once purchased. 
 
-A portion of the player's income is deducted as taxes, but the player can respond to this by holding their assets in offshore accounts, each of which are a collection of assets. these accounts eventually face taxes of their own, but an arbitrary number may be created at increasing cost. 
+A portion of the player's income is deducted as _taxes_, but the player can respond to this by holding their assets in offshore accounts, each of which are a collection of assets. these accounts eventually face _taxes_ of their own, but an arbitrary number may be created at increasing cost. 
 
-Random events may occur temporarily changing aspects of the game, such as a ceo saying something stupid so the companies shares are signifigantly cheaper, or a worker at one of your companies commits embezzlement. 
+Random events may occur temporarily changing aspects of the game, such as a ceo saying something stupid so the companies shares are signifigantly cheaper, or a worker at one of your companies commits __embezzlement__. 
 
 ### Who will use it?
 
@@ -31,12 +31,12 @@ Keegan likes making games and Harsh likes finances, a match made in heaven.
 
 
 ## USER STORIES FOR MEMBER 1
-As a user, I want to be able to buy ingame items (shares or business) (Does not involve user loading/saveing)  
-As a user, I want to be able to earn ingame money by pressing enter (Does not involve user loading/saveing)
+* As a user, I want to be able to buy ingame items (shares or business) (Does not involve user loading/saveing)  
+* As a user, I want to be able to earn ingame money by pressing enter (Does not involve user loading/saveing)
 
 ## USER STORIES FOR MEMBER 2
-As a user, I want to be able to view the collection of business owend (Does not involve user loading/saveing)  
-As a user, I want to be able to view the ownership amount of the ingame money maker object (Does not involve user loading/saveing)  
-As a user, I want to be able to saving my game file between sessions  
-As a user, I want to be able to farm money even after exiting the game
+* As a user, I want to be able to view the collection of business owend (Does not involve user loading/saveing)  
+* As a user, I want to be able to view the ownership amount of the ingame money maker object (Does not involve user loading/saveing)  
+* As a user, I want to be able to saving my game file between sessions  
+* As a user, I want to be able to farm money even after exiting the game
 
