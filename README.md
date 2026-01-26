@@ -31,12 +31,17 @@ Keegan likes making games and Harsh likes finances, a match made in heaven.
 
 
 ## USER STORIES FOR MEMBER 1
-* As a user, I want to be able to buy ingame items (shares or business) (Does not involve user loading/saveing)  
-* As a user, I want to be able to earn ingame money by pressing enter (Does not involve user loading/saveing)
+- As a user, I want to be able to buy ingame assets to make progress and increase my income. 
+- As a user, I want to be able to sell ingame assets so that if a better investment becomes an option, I can divest from a worse investment. 
+- As a user, I want to be able to earn ingame money by preforming a repetitive action, so if something goes horribly wrong it does not end the playthrough. 
+- As a user, I want to import and export my save file so I can play the game across multiple devices. 
+- As a user, I want the interface of the game to provide additional information my current savings, such as income from each asset or percentage of total income coming from each asset, so I can make better choices in how I play the game. 
+- As a user, I want there to be random events that change how I should play the game, because they can prevent the game from getting stale as well as providing exciting opportunities.
+
 
 ## USER STORIES FOR MEMBER 2
-* As a user, I want to be able to view the collection of business owend (Does not involve user loading/saveing)  
-* As a user, I want to be able to view the ownership amount of the ingame money maker object (Does not involve user loading/saveing)  
-* As a user, I want to be able to saving my game file between sessions  
-* As a user, I want to be able to farm money even after exiting the game
+- As a user, I want to be able to view the collection of business owned (Does not involve user loading/saving)  
+- As a user, I want to be able to view the ownership amount of the ingame money maker object (Does not involve user loading/saving)  
+- As a user, I want to be able to saving my game file between sessions  
+- As a user, I want to be able to farm money even after exiting the game
 
