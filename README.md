@@ -6,7 +6,7 @@
 
 ## Project proposal:
 
-
+This is an incremental game themed around financial crime. It begins as a edutainment style game about finances.
 
 ## USER STORIES FOR MEMBER 1
 
