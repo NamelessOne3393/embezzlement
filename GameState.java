@@ -21,7 +21,7 @@ public class GameState{
                 case 2:
                     System.out.println("You have the following properties");
                     for(MoneyProperties m: propertiesList){
-                        System.out.println(m);
+                        System.out.println(m.name);
                     }
                     break;
                 case 3:
@@ -49,6 +49,7 @@ public class GameState{
         System.out.println("----------------------------------------");
         System.out.println("    You can buy the following propeties:");
         System.out.println("        Company Name : Ownership ");
-        System.out.println("        " + propertiesList.get(0) + " : " + propertiesList.get(0).propertiesOwnership*100f);
+        System.out.println("        " + propertiesList.get(0).name + "      : " + propertiesList.get(0).propertiesOwnership*100f);
+        System.out.println("----------------------------------------");
     }
 }
