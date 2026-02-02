@@ -16,11 +16,11 @@ public class GameState{
             int input = in.nextInt();
             while(input > 4 || input < 1){ input = in.nextInt();}
             menuAction(input);
-
         } catch (Exception e) {
             e.printStackTrace(); 
         }
     }
+    //EFFECT: Just prints out the console main menu
     public static void printMainMenu(){
         System.out.println("----------------------------------------");
         System.out.println("    - Press 1 to see your wallet ");
@@ -29,19 +29,22 @@ public class GameState{
         System.out.println("    - Press 4 to exit ");
         System.out.println("----------------------------------------");
     }
+    //EFFECT: Just prints out the console buy menu
     public static void printBuyMenu(){
         System.out.println("----------------------------------------");
         System.out.println("    You can buy the following propeties:");
         System.out.println("        Company Name : Ownership ");
-        System.out.println("        " + propertiesList.get(0).name + "      : " + propertiesList.get(0).propertiesOwnership*100f);
+        System.out.println("        " + propertiesList.get(0).name + "      : " + (propertiesList.get(0).propertiesOwnership * 100) + "%");
         System.out.println("----------------------------------------");
     }
+    //REQUIRES: 1 <= num <= 4
+    //EFFECT: Print out detail of ingame objects
     public static void menuAction(int num){
         switch (num){
-            case 1 ->{System.out.println("You have " + Schilling + " in your wallet");}
+            case 1 ->{System.out.println("You have " + Schilling + " Schilling in your wallet");}
             case 2 -> {System.out.println("You have the following properties");
                 for(MoneyProperties m: propertiesList){
-                    System.out.println(m.name + "  : " + m.propertiesOwnership);
+                    System.out.println(m.name + "  : " + m.propertiesOwnership * 100 + "%");
                 }
             }   
             case 3 -> {printBuyMenu();}
