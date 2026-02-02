@@ -6,7 +6,7 @@ public class GameState{
     private static float Schilling;
     private static ArrayList<MoneyProperties> propertiesList, ownerList;
     public static void main(String[] args) {
-        GameState.Schilling = 1;
+        Schilling = 1;
         propertiesList = new ArrayList<>();
         ownerList = new ArrayList<>();
         System.out.println("Hello, you have " + Schilling);
@@ -15,22 +15,15 @@ public class GameState{
         try (Scanner in = new Scanner(System.in)){
             int input = in.nextInt();
             switch (input){
-                case 1:
-                    System.out.println("You have " + Schilling + " in your wallet");
-                    break;
-                case 2:
-                    System.out.println("You have the following properties");
+                case 1 ->{System.out.println("You have " + Schilling + " in your wallet");}
+                case 2 -> {System.out.println("You have the following properties");
                     for(MoneyProperties m: propertiesList){
-                        System.out.println(m.name);
+                        System.out.println(m.name + "  : " + m.propertiesOwnership);
                     }
-                    break;
-                case 3:
-                    printBuyMenu();
-                    break;
-                case 4:
-                    break;
-                default:
-                    System.out.println("Didnt put a number from 1 to 4");
+                }   
+                case 3 -> {printBuyMenu();}
+                case 4 -> {}
+                default -> {System.out.println("Didnt put a number from 1 to 4");}
             }
 
         } catch (Exception e) {
