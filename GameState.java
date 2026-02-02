@@ -14,17 +14,8 @@ public class GameState{
         propertiesList.add(new MoneyProperties(100, "Badcompany"));
         try (Scanner in = new Scanner(System.in)){
             int input = in.nextInt();
-            switch (input){
-                case 1 ->{System.out.println("You have " + Schilling + " in your wallet");}
-                case 2 -> {System.out.println("You have the following properties");
-                    for(MoneyProperties m: propertiesList){
-                        System.out.println(m.name + "  : " + m.propertiesOwnership);
-                    }
-                }   
-                case 3 -> {printBuyMenu();}
-                case 4 -> {}
-                default -> {System.out.println("Didnt put a number from 1 to 4");}
-            }
+            while(input > 4 || input < 1){ input = in.nextInt();}
+            menuAction(input);
 
         } catch (Exception e) {
             e.printStackTrace(); 
@@ -44,5 +35,17 @@ public class GameState{
         System.out.println("        Company Name : Ownership ");
         System.out.println("        " + propertiesList.get(0).name + "      : " + propertiesList.get(0).propertiesOwnership*100f);
         System.out.println("----------------------------------------");
+    }
+    public static void menuAction(int num){
+        switch (num){
+            case 1 ->{System.out.println("You have " + Schilling + " in your wallet");}
+            case 2 -> {System.out.println("You have the following properties");
+                for(MoneyProperties m: propertiesList){
+                    System.out.println(m.name + "  : " + m.propertiesOwnership);
+                }
+            }   
+            case 3 -> {printBuyMenu();}
+            case 4 -> {}
+        }
     }
 }
