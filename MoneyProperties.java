@@ -1,3 +1,10 @@
+/**
+ * This class represents the ingame share, company and etc items 
+ * that the player can buy and sell to make money based of its
+ * prize and percent ownership. It will keep track of the items
+ * Money Rate, Orignal Price, Ownership % and name
+ */
+
 class MoneyProperties {
     public float moneyRate, propertiesPrice, propertiesOwnership;
     public String name;
@@ -6,6 +13,7 @@ class MoneyProperties {
     //MODIFIES: this
     //EFFECT: Makes MoneyProperties have it attributes 
     public MoneyProperties(float propertiesPrice, String name){
+        //Constructor for it attributes 
         this.name = name;
         propertiesOwnership = 0.1f;
         moneyRate = propertiesOwnership * propertiesPrice;
@@ -14,6 +22,7 @@ class MoneyProperties {
     //MODIFIES: this
     //EFFECT: Increase propertiesOwnership by 10% and updates moneyRate
     public void increaseOwnership(){
+        //Increase ownership % and money rate when Player buys it 
         propertiesOwnership += 0.1;
         moneyRate = propertiesOwnership * propertiesPrice;
     }
