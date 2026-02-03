@@ -12,6 +12,7 @@ public class GameState{
         System.out.println("Hello, you have " + Schilling);
         printMainMenu();
         propertiesList.add(new MoneyProperties(100, "Badcompany"));
+        
         try (Scanner in = new Scanner(System.in)){
             int input = in.nextInt();
             while(input > 4 || input < 1){ input = in.nextInt();}
@@ -19,6 +20,7 @@ public class GameState{
         } catch (Exception e) {
             e.printStackTrace(); 
         }
+        
     }
     //EFFECT: Just prints out the console main menu
     public static void printMainMenu(){
@@ -26,13 +28,22 @@ public class GameState{
         System.out.println("    - Press 1 to see your wallet ");
         System.out.println("    - Press 2 to see your propeties ");
         System.out.println("    - Press 3 to go to buy menu ");
-        System.out.println("    - Press 4 to exit ");
+        System.out.println("    - Press 4 to go to sell menu ");
         System.out.println("----------------------------------------");
     }
     //EFFECT: Just prints out the console buy menu
     public static void printBuyMenu(){
         System.out.println("----------------------------------------");
         System.out.println("    You can buy the following propeties:");
+        System.out.println("        Company Name : Ownership ");
+        System.out.println("        " + propertiesList.get(0).name + "      : " + (propertiesList.get(0).propertiesOwnership * 100) + "%");
+        System.out.println("----------------------------------------");
+    }
+
+    //EFFECT: Just prints out the console buy menu
+    public static void sellMenu(){
+        System.out.println("----------------------------------------");
+        System.out.println("    You can sell the following propeties:");
         System.out.println("        Company Name : Ownership ");
         System.out.println("        " + propertiesList.get(0).name + "      : " + (propertiesList.get(0).propertiesOwnership * 100) + "%");
         System.out.println("----------------------------------------");
@@ -48,7 +59,7 @@ public class GameState{
                 }
             }   
             case 3 -> {printBuyMenu();}
-            case 4 -> {}
+            case 4 -> {sellMenu();}
         }
     }
 }

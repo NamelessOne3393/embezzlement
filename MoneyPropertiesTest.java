@@ -24,4 +24,17 @@ public class MoneyPropertiesTest{
         assertEquals(0.3f,mp.propertiesOwnership,0.0001);
         assertEquals(150f, mp.moneyRate, 0.0001);
     }
+    @Test
+    public void sellTest(){
+        float price = 500f;
+        MoneyProperties mp = new MoneyProperties(price, "Company2");
+        //Testing First call
+        mp.increaseOwnership();
+        assertEquals(0.2f,mp.propertiesOwnership,0.0001);
+        assertEquals(100f, mp.moneyRate, 0.0001);
+        //Testing Second Call
+        mp.decreaseOwnership();
+        assertEquals(0.1f,mp.propertiesOwnership,0.0001);
+        assertEquals(50f, mp.moneyRate, 0.0001);
+    }
 }

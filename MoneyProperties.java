@@ -26,4 +26,12 @@ class MoneyProperties {
         propertiesOwnership += 0.1;
         moneyRate = propertiesOwnership * propertiesPrice;
     }
+    //MODIFIES: this
+    //EFFECT: Increase propertiesOwnership by 10% and updates moneyRate
+    public void decreaseOwnership(){
+        //Increase ownership % and money rate when Player buys it 
+        propertiesOwnership -= 0.1;
+        moneyRate = propertiesOwnership * propertiesPrice;
+    }
+
 }
