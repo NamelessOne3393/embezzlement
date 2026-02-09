@@ -1,4 +1,4 @@
-package src.tests;
+package tests;
 import org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.Test;
