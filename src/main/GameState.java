@@ -15,15 +15,28 @@ public class GameState{
         System.out.println("Hello, you have " + Schilling);
         consoleDisplay.printMainMenu();
         propertiesList.add(new MoneyProperties(100, "Badcompany"));
-        
-        try (Scanner in = new Scanner(System.in)){
-            int input = in.nextInt();
-            while(input > 4 || input < 1){ input = in.nextInt();}
-            consoleDisplay.menuAction(input);
-        } catch (Exception e) {
-            e.printStackTrace(); 
+        Scanner in = new Scanner(System.in);
+        while(true){
+            String input = in.nextLine();
+            System.out.println(input);
+            String[] result = input.split("\s");
+            System.out.println(result);
+            int thing = -1;
+            for (String thingamajig : result) {
+                System.out.println(thingamajig);
+                try{
+                    thing = Integer.parseInt(thingamajig);
+                    break;
+                } catch(NumberFormatException e){}
+                
+            }
+
+
+            consoleDisplay.menuAction(thing);
+
+                
         }
-        
+        //in.close();
     }
     public static ArrayList<MoneyProperties> getOwnerList() {
         return ownerList;
