@@ -28,11 +28,22 @@ public class MoneyProperties {
         moneyRate = propertiesOwnership * propertiesPrice;
     }
     //MODIFIES: this
-    //EFFECT: Increase propertiesOwnership by 10% and updates moneyRate
+    //EFFECT: Buys all of propertiesOwnership and updates moneyRate
+    public void buyAllOwnership(){
+        propertiesOwnership = 1;
+        moneyRate = propertiesPrice;
+    }
+    //MODIFIES: this
+    //EFFECT: decreases propertiesOwnership by 10% and updates moneyRate
     public void decreaseOwnership(){
-        //Increase ownership % and money rate when Player buys it 
+        //decreases ownership % and money rate when Player buys it 
         propertiesOwnership -= 0.1;
         moneyRate = propertiesOwnership * propertiesPrice;
     }
-
+    //MODIFIES: this
+    //EFFECT: decreases propertiesOwnership to 0 and no moneyRate
+    public void sellAllOwnership(){
+        propertiesOwnership = 0;
+        moneyRate = 0;
+    }
 }
