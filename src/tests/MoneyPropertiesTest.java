@@ -1,7 +1,10 @@
-import static org.junit.Assert.assertEquals;
+package src.tests;
+import org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.Test;
 
 public class MoneyPropertiesTest{
+    /*
     @Test
     public void MoneyProperties_Attributes_Test(){
         float price = 1000f;String name = "Company1";
@@ -37,4 +40,36 @@ public class MoneyPropertiesTest{
         assertEquals(0.1f,mp.propertiesOwnership,0.0001);
         assertEquals(50f, mp.moneyRate, 0.0001);
     }
+    */
+    
+    /*tests to write
+    buy 1, buy X, buy all
+    sell 1, sell X, sell all
+        buy/sell 1,all call x
+        1 is default.
+    
+    refresh list
+        called after buying a new company
+    generate company, validate companies
+    
+    
+    */
+    @BeforeEach
+    void init(){}
+
+    void buy1Test(){}
+    void buyXTest(){}
+    void buyAllTest(){}
+    void sell1Test(){}
+    void sellXTest(){}
+    void sellAllTest(){}
+    void companyGenerateTest(){}
+    void partialCompanyGenerationTest(){}
+    void companyAvoidDuplicantTest(){}
+    void refreshCompaniesTest(){}
+
+
+
+
+
 }

@@ -1,6 +1,8 @@
+package src.main;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import src.models.MoneyProperties;
 
 public class GameState{
     private static float Schilling;

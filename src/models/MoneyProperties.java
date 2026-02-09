@@ -1,3 +1,4 @@
+package src.models;
 /**
  * This class represents the ingame share, company and etc items 
  * that the player can buy and sell to make money based of its
@@ -5,7 +6,7 @@
  * Money Rate, Orignal Price, Ownership % and name
  */
 
-class MoneyProperties {
+public class MoneyProperties {
     public float moneyRate, propertiesPrice, propertiesOwnership;
     public String name;
 
