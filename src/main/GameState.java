@@ -3,6 +3,7 @@ package src.main;
 import java.util.ArrayList;
 import java.util.Scanner;
 import src.models.MoneyProperties;
+import src.ui.consoleDisplay;
 
 public class GameState{
     private static float Schilling;
@@ -12,56 +13,27 @@ public class GameState{
         propertiesList = new ArrayList<>();
         ownerList = new ArrayList<>();
         System.out.println("Hello, you have " + Schilling);
-        printMainMenu();
+        consoleDisplay.printMainMenu();
         propertiesList.add(new MoneyProperties(100, "Badcompany"));
         
         try (Scanner in = new Scanner(System.in)){
             int input = in.nextInt();
             while(input > 4 || input < 1){ input = in.nextInt();}
-            menuAction(input);
+            consoleDisplay.menuAction(input);
         } catch (Exception e) {
             e.printStackTrace(); 
         }
         
     }
-    //EFFECT: Just prints out the console main menu
-    public static void printMainMenu(){
-        System.out.println("----------------------------------------");
-        System.out.println("    - Press 1 to see your wallet ");
-        System.out.println("    - Press 2 to see your propeties ");
-        System.out.println("    - Press 3 to go to buy menu ");
-        System.out.println("    - Press 4 to go to sell menu ");
-        System.out.println("----------------------------------------");
-    }
-    //EFFECT: Just prints out the console buy menu
-    public static void printBuyMenu(){
-        System.out.println("----------------------------------------");
-        System.out.println("    You can buy the following propeties:");
-        System.out.println("        Company Name : Ownership ");
-        System.out.println("        " + propertiesList.get(0).name + "      : " + (propertiesList.get(0).propertiesOwnership * 100) + "%");
-        System.out.println("----------------------------------------");
+    public static ArrayList<MoneyProperties> getOwnerList() {
+        return ownerList;
     }
 
-    //EFFECT: Just prints out the console buy menu
-    public static void sellMenu(){
-        System.out.println("----------------------------------------");
-        System.out.println("    You can sell the following propeties:");
-        System.out.println("        Company Name : Ownership ");
-        System.out.println("        " + propertiesList.get(0).name + "      : " + (propertiesList.get(0).propertiesOwnership * 100) + "%");
-        System.out.println("----------------------------------------");
+    public static ArrayList<MoneyProperties> getPropertiesList() {
+        return propertiesList;
     }
-    //REQUIRES: 1 <= num <= 4
-    //EFFECT: Print out detail of ingame objects
-    public static void menuAction(int num){
-        switch (num){
-            case 1 ->{System.out.println("You have " + Schilling + " Schilling in your wallet");}
-            case 2 -> {System.out.println("You have the following properties");
-                for(MoneyProperties m: propertiesList){
-                    System.out.println(m.name + "  : " + m.propertiesOwnership * 100 + "%");
-                }
-            }   
-            case 3 -> {printBuyMenu();}
-            case 4 -> {sellMenu();}
-        }
+
+    public static float getSchilling() {
+        return Schilling;
     }
 }
