@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import src.models.MoneyProperties;
 import src.ui.consoleDisplay;
+import src.ui.inputHandler;
 
 public class GameState{
     private static float Schilling;
@@ -18,26 +19,11 @@ public class GameState{
         Scanner in = new Scanner(System.in);
         while(true){
             String input = in.nextLine();
-            System.out.println(input);
-            String[] result = input.split("\s");
-            System.out.println(result);
-            int thing = -1;
-            for (String thingamajig : result) {
-                System.out.println(thingamajig);
-                try{
-                    thing = Integer.parseInt(thingamajig);
-                    break;
-                } catch(NumberFormatException e){}
-                
-            }
-
-
-            consoleDisplay.menuAction(thing);
-
-                
+            inputHandler.handleInput(input);
         }
         //in.close();
     }
+
     public static ArrayList<MoneyProperties> getOwnerList() {
         return ownerList;
     }
