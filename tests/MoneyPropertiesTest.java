@@ -1,6 +1,12 @@
 package tests;
 import org.junit.Assert.assertEquals;
+import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
+
+import src.models.MoneyProperties;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.Test;
 
 public class MoneyPropertiesTest{
@@ -54,19 +60,59 @@ public class MoneyPropertiesTest{
     
     
     */
-    @BeforeEach
-    void init(){}
-
-    void buy1Test(){}
-    void buyXTest(){}
-    void buyAllTest(){}
-    void sell1Test(){}
-    void sellXTest(){}
-    void sellAllTest(){}
-    void companyGenerateTest(){}
-    void partialCompanyGenerationTest(){}
-    void companyAvoidDuplicantTest(){}
-    void refreshCompaniesTest(){}
+    private MoneyProperties mp = new MoneyProperties(500f, "Company1");
+    @Test
+    public void buy1Test(){
+        mp.increaseOwnership();
+        assertEquals(0.2f, mp.propertiesOwnership,0.0001);
+        assertEquals(100f, mp.moneyRate, 0.0001);
+    }
+    @Test
+    public void buyXTest(){
+        int x = 8;
+        for(int i = 0; i < x; i++){
+            mp.increaseOwnership();
+        }
+        assertEquals(0.1f*9, mp.propertiesOwnership,0.0001);
+        assertEquals(450f, mp.moneyRate, 0.0001);
+    }
+    @Test
+    public void buyAllTest(){
+        mp.buyAllOwnership();
+        assertEquals(1, mp.propertiesOwnership,0.0001);
+        assertEquals(500f, mp.moneyRate, 0.0001);
+    }
+    @Before
+    public void init(){
+        for(int i = 0; i < 9; i++){mp.increaseOwnership();}
+    }
+    @Test
+    public void sell1Test(){
+        mp.decreaseOwnership();
+        assertEquals(0.9f,mp.propertiesOwnership,0.0001);
+        assertEquals(450f, mp.moneyRate, 0.0001);
+    }
+    @Test
+    public void sellXTest(){
+        int x = 8;
+        for(int i = 0; i < 8; i++){mp.decreaseOwnership();}
+        assertEquals(0.2f,mp.propertiesOwnership,0.0001);
+        assertEquals(100f, mp.moneyRate, 0.0001);
+    }
+    @Test
+    public void sellAllTest(){
+        mp.sellAllOwnership();
+        assertEquals(0f,mp.propertiesOwnership,0.0001);
+        assertEquals(0f, mp.moneyRate, 0.0001);
+    }
+    @Test
+    public void companyGenerateTest(){}
+    @Test
+    public void partialCompanyGenerationTest(){}
+    @Test
+    public void companyAvoidDuplicantTest(){}
+    @Test
+    public void refreshCompaniesTest(){}
 
 
 
