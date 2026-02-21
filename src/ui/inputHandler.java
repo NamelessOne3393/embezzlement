@@ -1,4 +1,5 @@
 package src.ui;
+
 /**
  * This class handles user input
  * It is a static class that only exists once, and is 
@@ -17,9 +18,9 @@ public class inputHandler {
 
     static int pointer = 0;//start on the default menu. this both determines what is rendered as well as what commands do
 
-    public static void handleInput(String input){
+    public static int handleInput(String input){
 
-        String[] result = input.split("\s");
+        String[] result = input.split("\\s+");
         int thing = -1;
         for (String thingamajig : result) {
             try{
@@ -27,10 +28,8 @@ public class inputHandler {
                 break;
             } catch(NumberFormatException e){}   
         }
-        consoleDisplay.menuAction(thing);
-
+        return thing;
     }
-
 
     
 }

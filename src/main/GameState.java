@@ -7,19 +7,19 @@ import src.ui.consoleDisplay;
 import src.ui.inputHandler;
 
 public class GameState{
-    private static float Schilling;
+    private static double Schilling;
     private static ArrayList<MoneyProperties> propertiesList, ownerList;
     public static void main(String[] args) {
-        Schilling = 1;
-        propertiesList = new ArrayList<>();
-        ownerList = new ArrayList<>();
+        Schilling = 100; propertiesList = new ArrayList<>();ownerList = new ArrayList<>();
         System.out.println("Hello, you have " + Schilling);
         consoleDisplay.printMainMenu();
         propertiesList.add(new MoneyProperties(100, "Badcompany"));
         Scanner in = new Scanner(System.in);
         while(true){
             String input = in.nextLine();
-            inputHandler.handleInput(input);
+            consoleDisplay.menuAction(inputHandler.handleInput(input));
+            consoleDisplay.printMainMenu();
+
         }
         //in.close();
     }
@@ -32,7 +32,10 @@ public class GameState{
         return propertiesList;
     }
 
-    public static float getSchilling() {
+    public static double getSchilling() {
         return Schilling;
+    }
+    public static void setSchilling(double schilling){
+        Schilling = schilling;
     }
 }
