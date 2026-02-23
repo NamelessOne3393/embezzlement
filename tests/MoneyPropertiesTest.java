@@ -60,50 +60,64 @@ public class MoneyPropertiesTest{
     
     
     */
-    private MoneyProperties mp = new MoneyProperties(500f, "Company1");
+    private MoneyProperties mp = new MoneyProperties(500, "Company1");
+    private MoneyProperties sp = new MoneyProperties(500, 0,"Company2");
     @Test
     public void buy1Test(){
         mp.increaseOwnership();
-        assertEquals(0.2f, mp.propertiesOwnership,0.0001);
-        assertEquals(100f, mp.moneyRate, 0.0001);
+        assertEquals(2, mp.propertiesOwnership,0.0001);
+        assertEquals(10, mp.moneyRate, 0.0001);
+        sp.buyProperty();
+        assertEquals(1,sp.numProperties, 0.0001 );
+        assertEquals(500, sp.moneyRate, 0.0001);
     }
     @Test
     public void buyXTest(){
-        int x = 8;
-        for(int i = 0; i < x; i++){
-            mp.increaseOwnership();
-        }
-        assertEquals(0.1f*9, mp.propertiesOwnership,0.0001);
-        assertEquals(450f, mp.moneyRate, 0.0001);
+        mp.increaseOwnership(9);
+        assertEquals(10, mp.propertiesOwnership,0.0001);
+        assertEquals(50, mp.moneyRate, 0.0001);
+        sp.buyXProperties(10);
+        assertEquals(10, sp.numProperties,0.0001);
+        assertEquals(5000, sp.moneyRate, 0.0001);
     }
     @Test
     public void buyAllTest(){
         mp.buyAllOwnership();
-        assertEquals(1, mp.propertiesOwnership,0.0001);
-        assertEquals(500f, mp.moneyRate, 0.0001);
+        assertEquals(100, mp.propertiesOwnership,0.0001);
+        assertEquals(500, mp.moneyRate, 0.0001);
     }
-    @Before
-    public void init(){
-        for(int i = 0; i < 9; i++){mp.increaseOwnership();}
-    }
+
     @Test
     public void sell1Test(){
+        mp.buyAllOwnership();
         mp.decreaseOwnership();
-        assertEquals(0.9f,mp.propertiesOwnership,0.0001);
-        assertEquals(450f, mp.moneyRate, 0.0001);
+        assertEquals(99,mp.propertiesOwnership,0.0001);
+        assertEquals(495, mp.moneyRate, 0.0001);
+        sp.buyXProperties(10);
+        sp.sellProperty();
+        assertEquals(9, sp.numProperties, 0.0001);
+        assertEquals(4500, sp.moneyRate,0.0001);
     }
     @Test
     public void sellXTest(){
-        int x = 8;
-        for(int i = 0; i < 8; i++){mp.decreaseOwnership();}
-        assertEquals(0.2f,mp.propertiesOwnership,0.0001);
-        assertEquals(100f, mp.moneyRate, 0.0001);
+        mp.buyAllOwnership();
+        mp.decreaseOwnership(10);
+        assertEquals(90,mp.propertiesOwnership,0.0001);
+        assertEquals(450, mp.moneyRate, 0.0001);
+        sp.buyXProperties(10);
+        sp.sellXProperties(8);
+        assertEquals(2, sp.numProperties, 0.0001);
+        assertEquals(1000, sp.moneyRate, 0.0001);
     }
     @Test
     public void sellAllTest(){
         mp.sellAllOwnership();
-        assertEquals(0f,mp.propertiesOwnership,0.0001);
-        assertEquals(0f, mp.moneyRate, 0.0001);
+        assertEquals(0,mp.propertiesOwnership,0.0001);
+        assertEquals(0, mp.moneyRate, 0.0001);
+        sp.buyXProperties(10);
+        sp.sellAllProperties();
+        assertEquals(0, sp.numProperties, 0.0001);
+        assertEquals(0, sp.moneyRate, 0.0001);
     }
     @Test
     public void companyGenerateTest(){}

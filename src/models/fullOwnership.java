@@ -1,7 +1,6 @@
 package src.models;
 
 public interface fullOwnership {
-    public void fullProperties();
     public void buyProperty();
     public void sellProperty();
     public void sellAllProperties();

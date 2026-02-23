@@ -1,15 +1,31 @@
 package tests;
 
-import org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
+import src.ui.inputHandler;
 
 public class inputHandlerTest {
-    
     //should not accept an imput with words if asking for a number and vis versa
-    void rejectBadFormatedInput(){}
+    @Test
+    public void rejectBadFormatedInput(){
+        int input = inputHandler.handleInput("hello");
+        assertEquals(-1, input);
+    }
+    //should accept valid number 
+    @Test
+    public void acceptValidNumber(){
+        int input = inputHandler.handleInput("43");
+        assertEquals(43, input);
+    }
+    @Test
+    public void acceptFirstNumberIfMultple(){
+        int input = inputHandler.handleInput("abc 13 def 88");
+        assertEquals(13, input);
+    }
     //should not accept an imput with more or less arguments than requested 
-    void rejectIncorrectArguments(){}
+    public void rejectIncorrectArguments(){}
     //depending on position, reject or accept certain arguments
     void changeRejectionCriteraByMenu(){}
     //changes output format depending on location

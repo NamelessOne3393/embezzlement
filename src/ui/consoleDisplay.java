@@ -53,7 +53,8 @@ public class consoleDisplay {
             }
         }
     }
-
+    //REQUIRES: num <= number of ownership available
+    //EFFECT: Increases the ownership by the amount num
     public static void buyMenuAction(int num){
         if(GameState.getSchilling() < num * 0.01 * GameState.getPropertiesList().get(0).propertiesPrice){
             System.out.println("Not enough money to buy " + num + "%");
@@ -62,7 +63,8 @@ public class consoleDisplay {
             GameState.getPropertiesList().get(0).increaseOwnership(num);
         }
     }
-
+    //REQUIRES: num <= number of ownership owned
+    //EFFECT: Increases the ownership by the amount num
     public static void sellMenuAction(int num){
         if(GameState.getPropertiesList().get(0).propertiesOwnership < num){
             System.out.println("Not enough ownership to sell");

@@ -22,6 +22,9 @@ public class MoneyProperties implements fullOwnership, fractionOwnership{
         moneyRate = propertiesOwnership * propertiesPrice;
         this.propertiesPrice = propertiesPrice;
     }
+    //REQURES: propertiesPrice, numProperties > 0
+    //MODIFIES: this
+    //EFFECT: Makes MoneyProperties have it attributes 
     public MoneyProperties(int propertiesPrice, int numProperties, String name){
         this.propertiesPrice = propertiesPrice;
         this.numProperties = numProperties;
@@ -29,7 +32,7 @@ public class MoneyProperties implements fullOwnership, fractionOwnership{
         moneyRate = numProperties * propertiesPrice;
     }
     //MODIFIES: this
-    //EFFECT: Increase propertiesOwnership by 10% and updates moneyRate
+    //EFFECT: Increase propertiesOwnership by 1% and updates moneyRate
     @Override
     public void increaseOwnership(){
         //Increase ownership % and money rate when Player buys it 
@@ -74,6 +77,8 @@ public class MoneyProperties implements fullOwnership, fractionOwnership{
         propertiesOwnership = 0;
         moneyRate = 0;
     }
+    //MODIFIES: this
+    //EFFECT: Increase propertiesOwnership by num% and updates moneyRate
     @Override
     public void increaseOwnership(int num){
         if(propertiesOwnership + num > 100){
@@ -85,6 +90,9 @@ public class MoneyProperties implements fullOwnership, fractionOwnership{
         propertiesOwnership += num;
         moneyRate = propertiesOwnership * propertiesPrice * 0.01;
     }
+    //REQURES: have enought to ownership to sell 
+    //MODIFIES: this
+    //EFFECT: Decreases propertiesOwnership by 1% and updates moneyRate
     @Override
     public void decreaseOwnership(int num){
         if(propertiesOwnership - num < 0){
@@ -96,28 +104,55 @@ public class MoneyProperties implements fullOwnership, fractionOwnership{
         propertiesOwnership -= num;
         moneyRate = propertiesOwnership * propertiesPrice * 0.01;
     }
-    @Override
-    public void fullProperties(){
-
-    }
+    //MODIFIES: this
+    //EFFECT: Increase numProperties by 1 and updates moneyRate
     @Override
     public void buyProperty(){
-
+        numProperties++;
+        moneyRate = numProperties * propertiesPrice;
     }
+    
+    //REQURES: have enought to properties to sell 
+    //MODIFIES: this
+    //EFFECT: decreases numProperties by 1 and updates moneyRate
     @Override
     public void sellProperty(){
-
+        if(numProperties <= 0){
+            System.out.println("Don't have any " + name + " to sell");
+        } else {
+            numProperties--;
+            moneyRate = numProperties * propertiesPrice;
+        }
     }
+    //REQURES: have properties to sell 
+    //MODIFIES: this
+    //EFFECT: decreases numProperties to 0 and updates moneyRate
     @Override
     public void sellAllProperties(){
-
+        if(numProperties <= 0){
+            System.out.println("Don't have any " + name + " to sell");
+        } else {
+            numProperties = 0;
+            moneyRate = 0;
+        }
     }
+    //MODIFIES: this
+    //EFFECT: increase numProperties by X and updates moneyRate
     @Override
     public void buyXProperties(int num){
-
+        numProperties += num;
+        moneyRate = numProperties * propertiesPrice;
     }
+    //REQURES: have X properties to sell 
+    //MODIFIES: this
+    //EFFECT: decreases numProperties by X and updates moneyRate
     @Override
     public void sellXProperties(int num){
-        
+        if(numProperties <= 0){
+            System.out.println("Don't have any " + name + " to sell");
+        } else {
+            numProperties -= num;
+            moneyRate = numProperties * propertiesPrice;
+        }
     }
 }
