@@ -155,4 +155,25 @@ public class MoneyProperties implements fullOwnership, fractionOwnership{
             moneyRate = numProperties * propertiesPrice;
         }
     }
+
+
+    public String exportData(){
+        String out = Double.toString(moneyRate)+","+Integer.toString(propertiesPrice)+","+Integer.toString(propertiesOwnership)+","+Integer.toString(numProperties)+","+name;
+        return out;
+    }
+
+    public void importData(String in){
+        String[] sp = in.split(",");
+        moneyRate = Double.parseDouble(sp[0]);
+        propertiesPrice = Integer.parseInt(sp[1]);
+        propertiesOwnership = Integer.parseInt(sp[2]);
+        numProperties = Integer.parseInt(sp[3]);
+        name = sp[4];
+    }
+/* 
+public double moneyRate;
+    public int propertiesPrice, propertiesOwnership, numProperties;
+    public String name;
+*/
+
 }

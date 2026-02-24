@@ -37,7 +37,8 @@ public class consoleDisplay {
     }
     //REQUIRES: 1 <= num <= 4
     //EFFECT: Print out detail of ingame objects
-    public static void menuAction(int num){
+    public static boolean menuAction(int num){
+        boolean run = false; 
         switch (num){
             case 1 ->{System.out.println("You have " + GameState.getSchilling() + " Schilling in your wallet");}
             case 2 -> {System.out.println("You have the following properties");
@@ -51,7 +52,9 @@ public class consoleDisplay {
             case 4 -> {printSellMenu();
                 sellMenuAction(inputHandler.handleInput(in.nextLine()));
             }
+            case 5 ->{run=true;}
         }
+        return run;
     }
     //REQUIRES: num <= number of ownership available
     //EFFECT: Increases the ownership by the amount num

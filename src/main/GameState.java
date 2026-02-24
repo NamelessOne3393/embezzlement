@@ -8,24 +8,20 @@ import src.ui.inputHandler;
 
 public class GameState{
     private static double Schilling;
-    private static ArrayList<MoneyProperties> propertiesList, ownerList;
+    private static ArrayList<MoneyProperties> propertiesList;
     public static void main(String[] args) {
-        Schilling = 100; propertiesList = new ArrayList<>();ownerList = new ArrayList<>();
+        Schilling = 100; propertiesList = new ArrayList<>();
         System.out.println("Hello, you have " + Schilling);
         consoleDisplay.printMainMenu();
         propertiesList.add(new MoneyProperties(100, "Badcompany"));
         Scanner in = new Scanner(System.in);
         while(true){
             String input = in.nextLine();
-            consoleDisplay.menuAction(inputHandler.handleInput(input));
+            if (consoleDisplay.menuAction(inputHandler.handleInput(input)))break;
             consoleDisplay.printMainMenu();
 
         }
-        //in.close();
-    }
-
-    public static ArrayList<MoneyProperties> getOwnerList() {
-        return ownerList;
+        SaveState.saveGame(propertiesList,Schilling);
     }
 
     public static ArrayList<MoneyProperties> getPropertiesList() {
