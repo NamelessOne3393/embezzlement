@@ -22,6 +22,15 @@ public class MoneyProperties implements fullOwnership, fractionOwnership{
         moneyRate = propertiesOwnership * propertiesPrice;
         this.propertiesPrice = propertiesPrice;
     }
+    //REQURES: propertiesPrice > 0
+    //MODIFIES: this
+    //EFFECT: Makes MoneyProperties have it attributes 
+    public MoneyProperties(int propertiesPrice, String name, int ownership){
+        this.name = name;
+        propertiesOwnership = ownership;
+        moneyRate = propertiesOwnership * propertiesPrice;
+        this.propertiesPrice = propertiesPrice;
+    }
     //REQURES: propertiesPrice, numProperties > 0
     //MODIFIES: this
     //EFFECT: Makes MoneyProperties have it attributes 

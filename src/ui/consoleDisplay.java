@@ -76,4 +76,12 @@ public class consoleDisplay {
             GameState.getPropertiesList().get(0).decreaseOwnership(num);
         }
     }
+
+    public static void saveMenu(){
+
+    }
+    public static void loadMenu(){
+        
+    }
+
 }
