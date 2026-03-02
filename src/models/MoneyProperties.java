@@ -7,31 +7,34 @@ package src.models;
  * Money Rate, Orignal Price, Ownership % and name
  */
 
-public class MoneyProperties implements fullOwnership, fractionOwnership{
+public class MoneyProperties extends Properties{
     public double moneyRate;
     public int propertiesPrice, propertiesOwnership, numProperties;
     public String name;
+    private boolean isSale;
 
     //REQURES: propertiesPrice > 0
     //MODIFIES: this
     //EFFECT: Makes MoneyProperties have it attributes 
-    public MoneyProperties(int propertiesPrice, String name){
+    public MoneyProperties(int propertiesPrice, String name, boolean isSale){
         //Constructor for it attributes 
         this.name = name;
         propertiesOwnership = 1;
         moneyRate = propertiesOwnership * propertiesPrice;
         this.propertiesPrice = propertiesPrice;
+        this.isSale = isSale;
     }
     //REQURES: propertiesPrice, numProperties > 0
     //MODIFIES: this
     //EFFECT: Makes MoneyProperties have it attributes 
-    public MoneyProperties(int propertiesPrice, int numProperties, String name){
-        this.propertiesPrice = propertiesPrice;
+    public MoneyProperties(int propertiesPrice, int numProperties, String name, boolean isSale){
+        this.propertiesPrice = propertiesPrice; 
         this.numProperties = numProperties;
         this.name = name;
         moneyRate = numProperties * propertiesPrice;
+        this.isSale = isSale;
     }
-    //MODIFIES: this
+        //MODIFIES: this
     //EFFECT: Increase propertiesOwnership by 1% and updates moneyRate
     @Override
     public void increaseOwnership(){
@@ -155,8 +158,10 @@ public class MoneyProperties implements fullOwnership, fractionOwnership{
             moneyRate = numProperties * propertiesPrice;
         }
     }
-
-
+    @Override
+    public boolean isSale(){
+        return isSale;
+    }
     public String exportData(){
         String out = Double.toString(moneyRate)+","+Integer.toString(propertiesPrice)+","+Integer.toString(propertiesOwnership)+","+Integer.toString(numProperties)+","+name;
         return out;

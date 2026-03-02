@@ -13,11 +13,12 @@ public class GameState{
         Schilling = 100; propertiesList = new ArrayList<>();
         System.out.println("Hello, you have " + Schilling);
         consoleDisplay.printMainMenu();
-        propertiesList.add(new MoneyProperties(100, "Badcompany"));
+        propertiesList.add(new MoneyProperties(100, "Badcompany", false));
+        propertiesList.add(new MoneyProperties(10, 0, "BadHouse", false));
         Scanner in = new Scanner(System.in);
         while(true){
             String input = in.nextLine();
-            if (consoleDisplay.menuAction(inputHandler.handleInput(input)))break;
+            if (consoleDisplay.menuAction(inputHandler.handleInput(input))) break;
             consoleDisplay.printMainMenu();
 
         }
