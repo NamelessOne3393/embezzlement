@@ -2,19 +2,21 @@ package src.main;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import src.models.MoneyProperties;
+import src.models.FullOwnerShip;
+import src.models.GameProperties;
+import src.models.ParcOwnerShip;
 import src.ui.consoleDisplay;
 import src.ui.inputHandler;
 
 public class GameState{
     private static double Schilling;
-    private static ArrayList<MoneyProperties> propertiesList;
+    private static ArrayList<GameProperties> propertiesList;
     public static void main(String[] args) {
         Schilling = 100; propertiesList = new ArrayList<>();
         System.out.println("Hello, you have " + Schilling);
         consoleDisplay.printMainMenu();
-        propertiesList.add(new MoneyProperties(100, "Badcompany", false));
-        propertiesList.add(new MoneyProperties(10, 0, "BadHouse", false));
+        propertiesList.add(new ParcOwnerShip(100, "Badcompany", 1));
+        propertiesList.add(new FullOwnerShip(10, 0, "BadHouse"));
         Scanner in = new Scanner(System.in);
         while(true){
             String input = in.nextLine();
@@ -22,10 +24,9 @@ public class GameState{
             consoleDisplay.printMainMenu();
 
         }
-        SaveState.saveGame(propertiesList,Schilling);
     }
 
-    public static ArrayList<MoneyProperties> getPropertiesList() {
+    public static ArrayList<GameProperties> getPropertiesList() {
         return propertiesList;
     }
 
