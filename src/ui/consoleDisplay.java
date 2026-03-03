@@ -88,8 +88,8 @@ public class consoleDisplay {
     //EFFECT: changes between parOwnership, fullOwnership 
     public static void sellMenuAction(int num){
         switch(num){
-            case 1 -> {buyParAction(inputHandler.handleInput(in.nextLine()));}
-            case 2 -> {buyWholeAction(inputHandler.handleInput(in.nextLine()));}
+            case 1 -> {sellParAction(inputHandler.handleInput(in.nextLine()));}
+            case 2 -> {sellWholeAction(inputHandler.handleInput(in.nextLine()));}
         }
     }
     //REQUIRES: num <= number of ownership owned
@@ -98,7 +98,7 @@ public class consoleDisplay {
         if(GameState.getPropertiesList().get(0).propOwnership < num){
             System.out.println("Not enough ownership to sell");
         } else {
-            GameState.setSchilling(GameState.getSchilling() + num * 0.01 * GameState.getPropertiesList().get(0).propertiesPrice );
+            GameState.setSchilling(GameState.getSchilling() + num * GameState.getPropertiesList().get(0).propertiesPrice/100.0 );
             GameState.getPropertiesList().get(0).decOwn(num);
         }
     }
@@ -107,8 +107,8 @@ public class consoleDisplay {
         if(GameState.getPropertiesList().get(1).propertiesPrice * num > GameState.getSchilling()){
             System.out.println("Not enough money to sell " + num);
         } else {
-            GameState.setSchilling(GameState.getSchilling() - num * GameState.getPropertiesList().get(1).propertiesPrice );
-            GameState.getPropertiesList().get(1).incOwn(num);
+            GameState.setSchilling(GameState.getSchilling() + num * GameState.getPropertiesList().get(1).propertiesPrice );
+            GameState.getPropertiesList().get(1).decOwn(num);
         }
     }
 }
