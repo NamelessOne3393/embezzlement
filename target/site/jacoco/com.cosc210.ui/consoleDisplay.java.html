@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>consoleDisplay.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">embezzlement</a> &gt; <a href="index.source.html" class="el_package">com.cosc210.ui</a> &gt; <span class="el_source">consoleDisplay.java</span></div><h1>consoleDisplay.java</h1><pre class="source lang-java linenums">package com.cosc210.ui;
+
+import com.cosc210.state.*;
+import java.util.Scanner;
+
+<span class="nc" id="L6">public class consoleDisplay {</span>
+<span class="nc" id="L7">    static Scanner in = new Scanner(System.in);</span>
+    //EFFECT: Just prints out the console main menu
+    public static void printMainMenu(){
+<span class="nc" id="L10">        System.out.println(&quot;----------------------------------------&quot;);</span>
+<span class="nc" id="L11">        System.out.println(&quot;    - Press 1 to see your wallet &quot;);</span>
+<span class="nc" id="L12">        System.out.println(&quot;    - Press 2 to see propeties &quot;);</span>
+<span class="nc" id="L13">        System.out.println(&quot;    - Press 3 to go to buy menu &quot;);</span>
+<span class="nc" id="L14">        System.out.println(&quot;    - Press 4 to go to sell menu &quot;);</span>
+<span class="nc" id="L15">        System.out.println(&quot;    - Press 5 to exit&quot;);</span>
+<span class="nc" id="L16">        System.out.println(&quot;----------------------------------------&quot;);</span>
+<span class="nc" id="L17">    }</span>
+    //EFFECT: Just prints out the console buy menu
+    public static void printBuyMenu(){
+<span class="nc" id="L20">        System.out.println(&quot;----------------------------------------&quot;);</span>
+<span class="nc" id="L21">        System.out.println(&quot;    You can buy the following propeties:&quot;);</span>
+<span class="nc" id="L22">        System.out.println(&quot;        Company Name : Ownership &quot;);</span>
+<span class="nc" id="L23">        System.out.println(&quot;1        &quot; + GameState.getPropertiesList().get(0).name + &quot;      : &quot; + (GameState.getPropertiesList().get(0).propOwnership) + &quot;%&quot;);</span>
+<span class="nc" id="L24">        System.out.println(&quot;2        &quot; + GameState.getPropertiesList().get(1).name + &quot;      : &quot; + (GameState.getPropertiesList().get(1).numProperties));</span>
+<span class="nc" id="L25">        System.out.println(&quot;----------------------------------------&quot;);</span>
+<span class="nc" id="L26">        System.out.println(&quot; First type 1 or 2 for the properties&quot;);</span>
+<span class="nc" id="L27">        System.out.println(&quot; Type amount ownership wanting to buy(For 10%: type 10 or 1 of full number of properties) &quot;);</span>
+<span class="nc" id="L28">    }</span>
+
+    //EFFECT: Just prints out the console buy menu
+    public static void printSellMenu(){
+<span class="nc" id="L32">        System.out.println(&quot;----------------------------------------&quot;);</span>
+<span class="nc" id="L33">        System.out.println(&quot;    You can sell the following propeties:&quot;);</span>
+<span class="nc" id="L34">        System.out.println(&quot;        Company Name : Ownership &quot;);</span>
+<span class="nc" id="L35">        System.out.println(&quot;1       &quot; + GameState.getPropertiesList().get(0).name + &quot;      : &quot; + (GameState.getPropertiesList().get(0).propOwnership) + &quot;%&quot;);</span>
+<span class="nc" id="L36">        System.out.println(&quot;2        &quot; + GameState.getPropertiesList().get(1).name + &quot;      : &quot; + (GameState.getPropertiesList().get(1).numProperties));</span>
+<span class="nc" id="L37">        System.out.println(&quot;----------------------------------------&quot;);</span>
+<span class="nc" id="L38">        System.out.println(&quot; First type 1 or 2 for the properties&quot;);</span>
+<span class="nc" id="L39">        System.out.println(&quot; Then Type amount ownership wanting to sell(For 10%: type 10 or 1 of full number of properties) &quot;);</span>
+<span class="nc" id="L40">    }</span>
+    //REQUIRES: 1 &lt;= num &lt;= 4
+    //EFFECT: Print out detail of ingame objects
+    public static boolean menuAction(int num){
+<span class="nc" id="L44">        boolean run = false; </span>
+<span class="nc bnc" id="L45" title="All 6 branches missed.">        switch (num){</span>
+<span class="nc" id="L46">            case 1 -&gt;{System.out.println(&quot;You have &quot; + GameState.getSchilling() + &quot; Schilling in your wallet&quot;);}</span>
+<span class="nc" id="L47">            case 2 -&gt; {System.out.println(&quot;There are the following properties&quot;);</span>
+<span class="nc" id="L48">                    System.out.println(&quot;1       &quot; + GameState.getPropertiesList().get(0).name + &quot;      : &quot; + (GameState.getPropertiesList().get(0).propOwnership) + &quot;%&quot;);</span>
+<span class="nc" id="L49">                    System.out.println(&quot;2        &quot; + GameState.getPropertiesList().get(1).name + &quot;      : &quot; + (GameState.getPropertiesList().get(1).numProperties));</span>
+<span class="nc" id="L50">            }   </span>
+<span class="nc" id="L51">            case 3 -&gt; {printBuyMenu();</span>
+<span class="nc" id="L52">                buyMenuAction(inputHandler.handleInput(in.nextLine()));</span>
+<span class="nc" id="L53">            }</span>
+<span class="nc" id="L54">            case 4 -&gt; {printSellMenu();</span>
+<span class="nc" id="L55">                sellMenuAction(inputHandler.handleInput(in.nextLine()));</span>
+<span class="nc" id="L56">            }</span>
+<span class="nc" id="L57">            case 5 -&gt;{run=true;}</span>
+        }
+<span class="nc" id="L59">        return run;</span>
+    }
+    //EFFECT: changes between parOwnership, fullOwnership 
+    public static void buyMenuAction(int num){
+<span class="nc bnc" id="L63" title="All 3 branches missed.">        switch(num){</span>
+<span class="nc" id="L64">            case 1 -&gt; {buyParAction(inputHandler.handleInput(in.nextLine()));}</span>
+<span class="nc" id="L65">            case 2 -&gt; {buyWholeAction(inputHandler.handleInput(in.nextLine()));}</span>
+        }
+<span class="nc" id="L67">    }</span>
+    //REQUIRES: num &lt;= number of ownership available
+    //EFFECT: Increases the ownership by the amount num
+    public static void buyParAction(int num){
+<span class="nc bnc" id="L71" title="All 2 branches missed.">        if(GameState.getSchilling() &lt; num * 0.01 * GameState.getPropertiesList().get(0).propertiesPrice){</span>
+<span class="nc" id="L72">            System.out.println(&quot;Not enough money to buy &quot; + num + &quot;%&quot;);</span>
+        } else {
+<span class="nc" id="L74">            GameState.setSchilling(GameState.getSchilling() - num);</span>
+<span class="nc" id="L75">            GameState.getPropertiesList().get(0).incOwn(num);</span>
+        }
+<span class="nc" id="L77">    }</span>
+    //REQUIRES: num &lt;= number of ownership available
+    //EFFECT: Increases the num of properties by the amount num
+    public static void buyWholeAction(int num){
+<span class="nc bnc" id="L81" title="All 2 branches missed.">        if(GameState.getSchilling() &lt; num * GameState.getPropertiesList().get(1).propertiesPrice){</span>
+<span class="nc" id="L82">            System.out.println(&quot;Not enough money to buy &quot; + num);</span>
+        } else {
+<span class="nc" id="L84">            GameState.setSchilling(GameState.getSchilling() - num * GameState.getPropertiesList().get(1).propertiesPrice );</span>
+<span class="nc" id="L85">            GameState.getPropertiesList().get(1).incOwn(num);</span>
+        }
+<span class="nc" id="L87">    }</span>
+    //EFFECT: changes between parOwnership, fullOwnership 
+    public static void sellMenuAction(int num){
+<span class="nc bnc" id="L90" title="All 3 branches missed.">        switch(num){</span>
+<span class="nc" id="L91">            case 1 -&gt; {sellParAction(inputHandler.handleInput(in.nextLine()));}</span>
+<span class="nc" id="L92">            case 2 -&gt; {sellWholeAction(inputHandler.handleInput(in.nextLine()));}</span>
+        }
+<span class="nc" id="L94">    }</span>
+    //REQUIRES: num &lt;= number of ownership owned
+    //EFFECT: decreases the ownership by the amount num
+    public static void sellParAction(int num){
+<span class="nc bnc" id="L98" title="All 2 branches missed.">        if(GameState.getPropertiesList().get(0).propOwnership &lt; num){</span>
+<span class="nc" id="L99">            System.out.println(&quot;Not enough ownership to sell&quot;);</span>
+        } else {
+<span class="nc" id="L101">            GameState.setSchilling(GameState.getSchilling() + num * GameState.getPropertiesList().get(0).propertiesPrice/100.0 );</span>
+<span class="nc" id="L102">            GameState.getPropertiesList().get(0).decOwn(num);</span>
+        }
+<span class="nc" id="L104">    }</span>
+    //EFFECT: decreases the num of properties 
+    public static void sellWholeAction(int num){
+<span class="nc bnc" id="L107" title="All 2 branches missed.">        if(GameState.getPropertiesList().get(1).propertiesPrice * num &gt; GameState.getSchilling()){</span>
+<span class="nc" id="L108">            System.out.println(&quot;Not enough money to sell &quot; + num);</span>
+        } else {
+<span class="nc" id="L110">            GameState.setSchilling(GameState.getSchilling() + num * GameState.getPropertiesList().get(1).propertiesPrice );</span>
+<span class="nc" id="L111">            GameState.getPropertiesList().get(1).decOwn(num);</span>
+        }
+<span class="nc" id="L113">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

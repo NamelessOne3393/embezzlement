@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ParcOwnerShip.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">embezzlement</a> &gt; <a href="index.source.html" class="el_package">com.cosc210.models</a> &gt; <span class="el_source">ParcOwnerShip.java</span></div><h1>ParcOwnerShip.java</h1><pre class="source lang-java linenums">package com.cosc210.models;
+/**
+ * This class reprents buyable object that need to be need
+ * to be bought in increments 
+ * */
+public class ParcOwnerShip extends GameProperties{  
+    //REQURES: propertiesPrice &gt; 0
+    //MODIFIES: this
+    //EFFECT: Makes ParcOwnerProperties have it attributes 
+<span class="fc" id="L10">    public ParcOwnerShip(int propertiesPrice, String name, int propOwnership){</span>
+        //Constructor for it attributes 
+<span class="fc" id="L12">        this.name = name;</span>
+<span class="fc" id="L13">        this.propOwnership = propOwnership;</span>
+<span class="fc" id="L14">        this.propertiesPrice = propertiesPrice;</span>
+<span class="fc" id="L15">        moneyRate = propOwnership * propertiesPrice;</span>
+<span class="fc" id="L16">    }</span>
+    //MODIFIES: this
+    //EFFECT: Increase propertiesOwnership by num% and updates moneyRate
+    @Override
+    public void incOwn(int num){
+<span class="pc bpc" id="L21" title="1 of 2 branches missed.">        if(propOwnership + num &gt; 100){</span>
+<span class="nc" id="L22">            propOwnership = 100;</span>
+<span class="nc" id="L23">            moneyRate = propertiesPrice;</span>
+<span class="nc" id="L24">            System.out.println(&quot;You have bought &quot; + (propOwnership - 100) + &quot; out of &quot; + num + &quot; shares&quot;);</span>
+<span class="nc" id="L25">            return;</span>
+        }
+<span class="fc" id="L27">        propOwnership += num;</span>
+<span class="fc" id="L28">        moneyRate = propOwnership * propertiesPrice * 0.01;</span>
+<span class="fc" id="L29">    }</span>
+    //REQUIRE: have enough ownership to sell
+    //MODIFIES: this
+    //EFFECT: decreases propertiesOwnership by num% and updates moneyRate
+    @Override
+    public void decOwn(int num){
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">        if(propOwnership - num &lt; 0){</span>
+<span class="nc" id="L36">            propOwnership = 0;</span>
+<span class="nc" id="L37">            moneyRate = 0;</span>
+<span class="nc" id="L38">            System.out.println(&quot;You have sold &quot; + (propOwnership) + &quot; out of &quot; + num + &quot; shares&quot;);</span>
+<span class="nc" id="L39">            return;</span>
+        }
+<span class="fc" id="L41">        propOwnership -= num;</span>
+<span class="fc" id="L42">        moneyRate = propOwnership * propertiesPrice/100;</span>
+<span class="fc" id="L43">    }</span>
+    //MODIFIES: this
+    //EFFECT: Buys all of propertiesOwnership and updates moneyRate
+    public void buyAll(){
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">        if(propOwnership == 100){</span>
+<span class="nc" id="L48">            System.out.println(&quot;Already have full ownership&quot;);</span>
+<span class="nc" id="L49">            return;</span>
+        }
+<span class="fc" id="L51">        propOwnership = 100;</span>
+<span class="fc" id="L52">        moneyRate = propertiesPrice;</span>
+<span class="fc" id="L53">    }</span>
+    //MODIFIES: this
+    //EFFECT: decreases propertiesOwnership to 0 and no moneyRate
+    @Override
+    public void sellAll(){
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">        if(propOwnership == 0){</span>
+<span class="nc" id="L59">            System.out.println(&quot;You don't have any ownership to sell&quot;);</span>
+<span class="nc" id="L60">            return;</span>
+        }
+<span class="fc" id="L62">        propOwnership = 0;</span>
+<span class="fc" id="L63">        moneyRate = 0;</span>
+<span class="fc" id="L64">    }</span>
+    //EFFECT: Saves moneyRate, propertiesPrice, propOwnership, and name     
+    @Override
+    public void autoExportData(){
+
+<span class="nc" id="L69">    }</span>
+    //EFFECT: Saves moneyRate, propertiesPrice, propOwnership, and name automatically    
+    @Override
+    public void selectExportDate(){
+    //EFFECT: Loads moneyRate, propertiesPrice, propOwnership, and name      
+<span class="nc" id="L74">    }</span>
+    @Override    
+    public void autoImportData(String in){
+
+<span class="nc" id="L78">    }</span>
+    //EFFECT: Loads moneyRate, propertiesPrice, propOwnership, and name      
+    @Override    
+    public void selectImportDate(String in){
+
+<span class="nc" id="L83">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

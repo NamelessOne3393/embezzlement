@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>inputHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">embezzlement</a> &gt; <a href="index.source.html" class="el_package">com.cosc210.ui</a> &gt; <span class="el_source">inputHandler.java</span></div><h1>inputHandler.java</h1><pre class="source lang-java linenums">package com.cosc210.ui;
+
+/**
+ * This class handles user input
+ * It is a static class that only exists once, and is 
+ * a resource by other classes
+ * 
+ * 
+ * 
+ * Menus will be stored as lists of keywords and formats, which will then be assembled in the display
+ * 
+*/
+
+
+
+/**
+ * This class handles user input
+ * It is a static class that only exists once, and is 
+ * a resource by other classes
+ * 
+ * 
+ * 
+ * Menus will be stored as lists of keywords and formats, which will then be assembled in the display
+ * 
+*/
+
+
+
+<span class="nc" id="L29">public class inputHandler {</span>
+
+
+    public static int handleInput(String input){
+
+<span class="fc" id="L34">        String[] result = input.split(&quot;\\s+&quot;);</span>
+<span class="fc" id="L35">        int thing = -1;</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        for (String thingamajig : result) {</span>
+            try{
+<span class="fc" id="L38">                thing = Integer.parseInt(thingamajig);</span>
+<span class="fc" id="L39">                break;</span>
+<span class="fc" id="L40">            } catch(NumberFormatException e){}   </span>
+        }
+<span class="fc" id="L42">        return thing;</span>
+    }
+
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
