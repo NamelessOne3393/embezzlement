@@ -1,5 +1,7 @@
 package com.cosc210.models;
+
+import org.json.JSONObject;
+
 public interface Saveable{
-    public void autoExportData();
-    public void selectExportDate();
+    public JSONObject ExportData();
 }

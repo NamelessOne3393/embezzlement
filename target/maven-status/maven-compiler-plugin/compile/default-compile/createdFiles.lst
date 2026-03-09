@@ -7,3 +7,4 @@ com\cosc210\models\exception\notEnoughOwnershipException.class
 com\cosc210\models\GameProperties.class
 com\cosc210\models\ParcOwnerShip.class
 com\cosc210\ui\consoleDisplay.class
+

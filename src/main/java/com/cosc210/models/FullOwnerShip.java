@@ -1,5 +1,7 @@
 package com.cosc210.models;
 
+import org.json.JSONObject;
+
 import com.cosc210.models.exception.notEnoughOwnershipException;
 
 /**
@@ -15,6 +17,17 @@ public class FullOwnerShip extends GameProperties{
         this.propertiesPrice = propertiesPrice; 
         this.numProperties = numProperties;
         this.name = name;
+        moneyRate = numProperties * propertiesPrice;
+    }
+    //REQURES: propertiesPrice, numProperties > 0
+    //MODIFIES: this
+    //EFFECT: Makes MoneyProperties have it attributes 
+    public FullOwnerShip(JSONObject obj){
+        
+        System.out.println(obj);
+        this.propertiesPrice = obj.getInt("propertiesPrice"); 
+        this.numProperties = obj.getInt("numProperties");
+        this.name = obj.getString("name");
         moneyRate = numProperties * propertiesPrice;
     }
     //MODIFIES: this
@@ -49,23 +62,17 @@ public class FullOwnerShip extends GameProperties{
         }
     }
     //EFFECT: Saves moneyRate, propertiesPrice, numProperties, and name     
+    
     @Override
-    public void autoExportData(){
+    public JSONObject ExportData(){
+        JSONObject out = new JSONObject();
 
-    }
-    //EFFECT: Saves moneyRate, propertiesPrice, numProperties, and name automatically    
-    @Override
-    public void selectExportDate(){
-    //EFFECT: Loads moneyRate, propertiesPrice, numProperties, and name      
-    }
-    @Override    
-    public void autoImportData(String in){
+        out.put("name",name);
+        out.put("propertiesPrice",propertiesPrice);
+        out.put("numProperties",numProperties);
+        out.put("type","full");
 
-    }
-    //EFFECT: Loads moneyRate, propertiesPrice, numProperties, and name      
-    @Override    
-    public void selectImportDate(String in){
-
+        return out;
     }
 
 }
