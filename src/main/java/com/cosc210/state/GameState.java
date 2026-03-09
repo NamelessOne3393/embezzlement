@@ -3,8 +3,12 @@ package com.cosc210.state;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.cosc210.ui.*;
-import com.cosc210.models.*;
+import com.cosc210.models.FullOwnerShip;
+import com.cosc210.models.GameProperties;
+import com.cosc210.models.ParcOwnerShip;
+import com.cosc210.ui.FrameMaker;
+import com.cosc210.ui.consoleDisplay;
+import com.cosc210.ui.inputHandler;
 
 public class GameState{
     private static double Schilling;
@@ -16,6 +20,8 @@ public class GameState{
         propertiesList.add(new ParcOwnerShip(100, "Badcompany", 1));
         propertiesList.add(new FullOwnerShip(10, 0, "BadHouse"));
         Scanner in = new Scanner(System.in);
+        FrameMaker mainMenu = new FrameMaker();
+        mainMenu.createMainFrame();
         while(true){
             String input = in.nextLine();
             if (consoleDisplay.menuAction(inputHandler.handleInput(input))) break;

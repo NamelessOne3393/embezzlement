@@ -1,7 +1,8 @@
 package com.cosc210.ui;
 
-import com.cosc210.state.*;
 import java.util.Scanner;
+
+import com.cosc210.state.GameState;
 
 public class consoleDisplay {
     static Scanner in = new Scanner(System.in);
