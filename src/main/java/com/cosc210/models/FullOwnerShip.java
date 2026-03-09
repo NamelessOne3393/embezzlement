@@ -1,4 +1,7 @@
 package com.cosc210.models;
+
+import com.cosc210.models.exception.notEnoughOwnershipException;
+
 /**
  * This class reprents the buyable object that need to bought as whole
  * It will keep track of Money Rate, Original Price, number of it owned, 
@@ -25,9 +28,9 @@ public class FullOwnerShip extends GameProperties{
     //MODIFIES: this
     //EFFECT: decreases numProperties by 1 and updates moneyRate
     @Override
-    public void decOwn(int num){
+    public void decOwn(int num) throws notEnoughOwnershipException{
         if(numProperties <= 0){
-            System.out.println("Don't have any " + name + " to sell");
+            throw new notEnoughOwnershipException("Not enough to sell");
         } else {
             numProperties-= num;
             moneyRate = numProperties * propertiesPrice;
@@ -37,9 +40,9 @@ public class FullOwnerShip extends GameProperties{
     //MODIFIES: this
     //EFFECT: decreases numProperties to 0 and updates moneyRate
     @Override
-    public void sellAll(){
+    public void sellAll()throws notEnoughOwnershipException{
         if(numProperties <= 0){
-            System.out.println("Don't have any " + name + " to sell");
+            throw new notEnoughOwnershipException("none to sell");
         } else {
             numProperties = 0;
             moneyRate = 0;

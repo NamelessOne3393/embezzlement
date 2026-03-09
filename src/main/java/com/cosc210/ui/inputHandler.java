@@ -37,7 +37,7 @@ public class inputHandler {
             try{
                 thing = Integer.parseInt(thingamajig);
                 break;
-            } catch(NumberFormatException e){}   
+            } catch(NumberFormatException e){}
         }
         return thing;
     }

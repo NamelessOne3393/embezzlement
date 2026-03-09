@@ -1,4 +1,4 @@
-package com.cosc210.state;
+package com.cosc210.models.state;
 
 
 //     static public int saveGame(ArrayList<GameProperties> properties,double money){

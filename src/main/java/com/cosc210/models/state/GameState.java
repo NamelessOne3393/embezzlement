@@ -1,10 +1,13 @@
-package com.cosc210.state;
+package com.cosc210.models.state;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.cosc210.ui.*;
-import com.cosc210.models.*;
+import com.cosc210.models.FullOwnerShip;
+import com.cosc210.models.GameProperties;
+import com.cosc210.models.ParcOwnerShip;
+import com.cosc210.ui.consoleDisplay;
+import com.cosc210.ui.inputHandler;
 
 public class GameState{
     private static double Schilling;
@@ -20,7 +23,6 @@ public class GameState{
             String input = in.nextLine();
             if (consoleDisplay.menuAction(inputHandler.handleInput(input))) break;
             consoleDisplay.printMainMenu();
-
         }
     }
 
