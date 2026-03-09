@@ -1,0 +1,1 @@
+{"companies":[{"propertiesPrice":100,"name":"Badcompany","propOwnership":1,"type":"parc"},{"propertiesPrice":10,"numProperties":10,"name":"BadHouse","type":"full"}],"money":0}

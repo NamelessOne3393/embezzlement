@@ -1,4 +1,7 @@
 package com.cosc210.models;
+
+import org.json.JSONObject;
+
 /**
  * This class reprents buyable object that need to be need
  * to be bought in increments 
@@ -12,6 +15,14 @@ public class ParcOwnerShip extends GameProperties{
         this.name = name;
         this.propOwnership = propOwnership;
         this.propertiesPrice = propertiesPrice;
+        moneyRate = propOwnership * propertiesPrice;
+    }
+    public ParcOwnerShip(JSONObject obj){
+        
+
+        this.propertiesPrice = obj.getInt("propertiesPrice"); 
+        this.propOwnership = obj.getInt("propOwnership");
+        this.name = obj.getString("name");
         moneyRate = propOwnership * propertiesPrice;
     }
     //MODIFIES: this
@@ -64,22 +75,17 @@ public class ParcOwnerShip extends GameProperties{
     }
     //EFFECT: Saves moneyRate, propertiesPrice, propOwnership, and name     
     @Override
-    public void autoExportData(){
+    public JSONObject ExportData(){
+        JSONObject out = new JSONObject();
 
+        out.put("name",name);
+        out.put("propertiesPrice",propertiesPrice);
+        out.put("propOwnership",propOwnership);
+        out.put("type","parc");
+
+        return out;
     }
     //EFFECT: Saves moneyRate, propertiesPrice, propOwnership, and name automatically    
-    @Override
-    public void selectExportDate(){
-    //EFFECT: Loads moneyRate, propertiesPrice, propOwnership, and name      
-    }
-    @Override    
-    public void autoImportData(String in){
-
-    }
-    //EFFECT: Loads moneyRate, propertiesPrice, propOwnership, and name      
-    @Override    
-    public void selectImportDate(String in){
-
-    }
+    
 
 }

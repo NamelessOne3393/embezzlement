@@ -19,6 +19,15 @@
   </properties>
 
   <dependencies>
+
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20251224</version>
+      <type>jar</type>
+    </dependency>
+
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
