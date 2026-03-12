@@ -1,4 +1,7 @@
 package com.cosc210.models;
+
+import com.cosc210.models.exception.notEnoughOwnershipException;
+
 /**
  * This class reprents buyable object that need to be need
  * to be bought in increments 
@@ -31,12 +34,9 @@ public class ParcOwnerShip extends GameProperties{
     //MODIFIES: this
     //EFFECT: decreases propertiesOwnership by num% and updates moneyRate
     @Override
-    public void decOwn(int num){
+    public void decOwn(int num) throws notEnoughOwnershipException{
         if(propOwnership - num < 0){
-            propOwnership = 0;
-            moneyRate = 0;
-            System.out.println("You have sold " + (propOwnership) + " out of " + num + " shares");
-            return;
+            throw new notEnoughOwnershipException("You don't have any " + name + " to sell");
         }
         propOwnership -= num;
         moneyRate = propOwnership * propertiesPrice/100;
@@ -54,10 +54,9 @@ public class ParcOwnerShip extends GameProperties{
     //MODIFIES: this
     //EFFECT: decreases propertiesOwnership to 0 and no moneyRate
     @Override
-    public void sellAll(){
+    public void sellAll() throws notEnoughOwnershipException{
         if(propOwnership == 0){
-            System.out.println("You don't have any ownership to sell");
-            return;
+            throw new notEnoughOwnershipException("You don't have any" + name+ " to sell");
         }
         propOwnership = 0;
         moneyRate = 0;

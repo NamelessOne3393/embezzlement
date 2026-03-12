@@ -1,7 +1,11 @@
 package com.cosc210;
 
 import com.cosc210.models.ParcOwnerShip;
+import com.cosc210.models.exception.notEnoughOwnershipException;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,20 +35,42 @@ public class ParcOwnerShipTest {
     }
     @Test
     public void decOwnOnetest(){
-        ob.decOwn(1);
-        assertEquals(49, ob.propOwnership, 0.0001);
-        assertEquals(245, ob.moneyRate,0.0001);
+        try{
+            ob.decOwn(1);
+            assertEquals(49, ob.propOwnership, 0.0001);
+            assertEquals(245, ob.moneyRate,0.0001);
+        } catch (notEnoughOwnershipException e ){
+            fail("Should not throw a notEnoughOwnershipException");
+        }
     }
     @Test
     public void decOwnXtest(){
+        try{
         ob.decOwn(5);
         assertEquals(45, ob.propOwnership, 0.0001);
         assertEquals(225, ob.moneyRate,0.0001);
+        }catch(notEnoughOwnershipException e){
+            fail("Should not throw a notEnoughOwnershipException");
+        }
     }
     @Test
     public void decOwnAlltest(){
+        try{
         ob.sellAll();
         assertEquals(0, ob.propOwnership, 0.0001);
         assertEquals(0, ob.moneyRate,0.0001);
+        } catch(notEnoughOwnershipException e){
+            fail("Should not throw a notEnoughOwnershipException");
+        }
+    }
+    @Test
+    public void notEnoughOwnershipTest(){
+        try {
+            ob.sellAll();
+            ob.decOwn(1);
+            fail("Should have thrown a notEnoughOwnershipException");
+        } catch (notEnoughOwnershipException e) {
+            //Expected
+        }
     }
 }
