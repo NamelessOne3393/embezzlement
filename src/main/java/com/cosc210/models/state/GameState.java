@@ -17,10 +17,8 @@ public class GameState{
     private static String fileName = "";
     public static void main(String[] args) {
         Schilling = 0; propertiesList = new ArrayList<>();
-
         Scanner in = new Scanner(System.in);
         while(fileName==""){
-
             System.out.println("Enter your save file name");
             String input = in.nextLine();
             if (new File("data/"+input+".json").exists()){
@@ -32,11 +30,7 @@ public class GameState{
                     loadGame(propertiesList, fileName);
                     fileName=input;
             }
-
-
-
         }
-        
         Schilling = loadGame(propertiesList,fileName);
         consoleDisplay.printMainMenu();
 
