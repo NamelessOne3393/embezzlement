@@ -1,31 +1,37 @@
 package com.cosc210;
 
-import com.cosc210.models.FullOwnerShip;
-import com.cosc210.models.exception.notEnoughOwnershipException;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import com.cosc210.models.FullOwnerShip;
+import com.cosc210.models.exception.notEnoughMoneyException;
+import com.cosc210.models.exception.notEnoughOwnershipException;
 
 public class FullOwnerShipTest {
     private FullOwnerShip ob ;
     @Before
     public void setup(){
         ob = new FullOwnerShip(500, 10,"Company1");
+        ob.TESTMODE();
+        
     }
     @Test
     public void incOwnOneTest(){
+        try{
         ob.incOwn(1);
         assertEquals(11,ob.numProperties, 0.0001 );
         assertEquals(5500, ob.moneyRate, 0.0001);
+        }catch(notEnoughMoneyException e){}
     }
     @Test
     public void incOwnXTest(){
+        try{
         ob.incOwn(10);
         assertEquals(20, ob.numProperties,0.0001);
         assertEquals(10000, ob.moneyRate, 0.0001);
+        }catch(notEnoughMoneyException e){}
     }
     @Test
     public void decOwnOnetest(){

@@ -16,10 +16,21 @@ public class GameState{
 
     private static String fileName = "";
     public static void main(String[] args) {
-        Schilling = 0; propertiesList = new ArrayList<>();
 
         Scanner in = new Scanner(System.in);
-        while(fileName==""){
+        init(in);
+        while(true){
+            String input = in.nextLine();
+            if (consoleDisplay.menuAction(inputHandler.handleInput(input))) break;
+            consoleDisplay.printMainMenu();
+        }
+        in.close();
+        saveGame(propertiesList, Schilling,fileName);
+    }
+
+    public static void init(Scanner in){
+        Schilling = 0; propertiesList = new ArrayList<>(); fileName = "";
+        while(fileName == ""){
 
             System.out.println("Enter your save file name");
             String input = in.nextLine();
@@ -28,25 +39,15 @@ public class GameState{
             } else{
                 System.out.println("Invalid save, make a new file?(y/n)");
                 String input2 = in.nextLine();
-                if (input2=="y")
+                if (input2 == "y")
                     loadGame(propertiesList, fileName);
-                    fileName=input;
+                    fileName = input;
             }
-
-
-
         }
-        
         Schilling = loadGame(propertiesList,fileName);
-        consoleDisplay.printMainMenu();
-
+        
         System.out.println("Hello, you have " + Schilling);
-        while(true){
-            String input = in.nextLine();
-            if (consoleDisplay.menuAction(inputHandler.handleInput(input))) break;
-            consoleDisplay.printMainMenu();
-        }
-        saveGame(propertiesList, Schilling,fileName);
+        consoleDisplay.printMainMenu();
     }
 
     public static ArrayList<GameProperties> getPropertiesList() {
@@ -59,4 +60,11 @@ public class GameState{
     public static void setSchilling(double schilling){
         Schilling = schilling;
     }
+
+    public static void moneyChange(double money){
+        Schilling += money;
+    }
+    //i am aware only one of these is needed, but i like readability
+
+    
 }

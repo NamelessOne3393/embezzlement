@@ -2,6 +2,9 @@ package com.cosc210.models;
 
 import org.json.JSONObject;
 
+import com.cosc210.models.exception.notEnoughMoneyException;
+import com.cosc210.models.state.GameState;
+
 /**
  * This class reprents buyable object that need to be need
  * to be bought in increments 
@@ -28,15 +31,17 @@ public class ParcOwnerShip extends GameProperties{
     //MODIFIES: this
     //EFFECT: Increase propertiesOwnership by num% and updates moneyRate
     @Override
-    public void incOwn(int num){
+    public void incOwn(int num) throws notEnoughMoneyException{
         if(propOwnership + num > 100){
-            propOwnership = 100;
-            moneyRate = propertiesPrice;
-            System.out.println("You have bought " + (propOwnership - 100) + " out of " + num + " shares");
-            return;
+            System.out.println("Only " + ( num + propOwnership-100) + " shares out of " + num + " exist. Buying "+(num + propOwnership-100)+" shares");
+            incOwn( num + propOwnership-100);
+        } else{
+            if (num*propertiesPrice>getMoney()){throw new notEnoughMoneyException();}
+            propOwnership += num;
+            moneyRate = propOwnership * propertiesPrice * 0.01;
+            setMoney(-num*propertiesPrice);
+            
         }
-        propOwnership += num;
-        moneyRate = propOwnership * propertiesPrice * 0.01;
     }
     //REQUIRE: have enough ownership to sell
     //MODIFIES: this
@@ -44,10 +49,8 @@ public class ParcOwnerShip extends GameProperties{
     @Override
     public void decOwn(int num){
         if(propOwnership - num < 0){
-            propOwnership = 0;
-            moneyRate = 0;
-            System.out.println("You have sold " + (propOwnership) + " out of " + num + " shares");
-            return;
+            System.out.println("Only " + (100-propOwnership) + " shares out of " + num + " exist. Selling "+(100- propOwnership)+" shares");
+            decOwn(100- propOwnership);
         }
         propOwnership -= num;
         moneyRate = propOwnership * propertiesPrice/100;
@@ -70,6 +73,8 @@ public class ParcOwnerShip extends GameProperties{
             System.out.println("You don't have any ownership to sell");
             return;
         }
+
+        setMoney(propOwnership*propertiesPrice);
         propOwnership = 0;
         moneyRate = 0;
     }
@@ -85,7 +90,20 @@ public class ParcOwnerShip extends GameProperties{
 
         return out;
     }
-    //EFFECT: Saves moneyRate, propertiesPrice, propOwnership, and name automatically    
+    
+
+    public Double getMoney(){
+
+        return (TESTONLY==Integer.MIN_VALUE)?GameState.getSchilling():TESTONLY;
+    }
+    public void setMoney(int money){
+
+        if (TESTONLY==Integer.MIN_VALUE){
+            GameState.moneyChange(money);
+        }else{
+            TESTONLY+=money;
+        }
+    } 
     
 
 }
