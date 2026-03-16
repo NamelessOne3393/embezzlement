@@ -7,18 +7,22 @@ import java.util.Scanner;
 import com.cosc210.models.GameProperties;
 import static com.cosc210.models.state.SaveState.loadGame;
 import static com.cosc210.models.state.SaveState.saveGame;
+import com.cosc210.ui.MainJFrame;
 import com.cosc210.ui.consoleDisplay;
 import com.cosc210.ui.inputHandler;
 
 public class GameState{
     private static double Schilling;
     private static ArrayList<GameProperties> propertiesList;
+    
 
     private static String fileName = "";
     public static void main(String[] args) {
+        
+        MainJFrame.thing();
         Schilling = 0; propertiesList = new ArrayList<>();
         Scanner in = new Scanner(System.in);
-        while(fileName==""){
+        while(fileName == ""){
             System.out.println("Enter your save file name");
             String input = in.nextLine();
             if (new File("data/"+input+".json").exists()){
@@ -26,9 +30,8 @@ public class GameState{
             } else{
                 System.out.println("Invalid save, make a new file?(y/n)");
                 String input2 = in.nextLine();
-                if (input2=="y")
-                    loadGame(propertiesList, fileName);
-                    fileName=input;
+                if (input2 == "y")loadGame(propertiesList, fileName);
+                    fileName = input;
             }
         }
         Schilling = loadGame(propertiesList,fileName);
