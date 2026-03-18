@@ -3,7 +3,7 @@ package com.cosc210.models;
 import com.cosc210.models.exception.notEnoughMoneyException;
 import com.cosc210.models.exception.notEnoughOwnershipException;
 
-public abstract class GameProperties implements Saveable, Loadable { 
+public abstract class GameProperties implements Exportable { 
     public double moneyRate;
     public int propertiesPrice, propOwnership,numProperties;
     public String name;

@@ -21,8 +21,6 @@ public class ParcOwnerShip extends GameProperties{
         moneyRate = propOwnership * propertiesPrice;
     }
     public ParcOwnerShip(JSONObject obj){
-        
-
         this.propertiesPrice = obj.getInt("propertiesPrice"); 
         this.propOwnership = obj.getInt("propOwnership");
         this.name = obj.getString("name");

@@ -5,18 +5,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.cosc210.models.GameProperties;
-import static com.cosc210.models.state.SaveState.loadGame;
-import static com.cosc210.models.state.SaveState.saveGame;
 import com.cosc210.ui.consoleDisplay;
 import com.cosc210.ui.inputHandler;
 
 public class GameState{
     private static double Schilling;
     private static ArrayList<GameProperties> propertiesList;
-
+    private static SaveState s = new SaveState();
     private static String fileName = "";
     public static void main(String[] args) {
-
         Scanner in = new Scanner(System.in);
         init(in);
         while(true){
@@ -25,7 +22,7 @@ public class GameState{
             consoleDisplay.printMainMenu();
         }
         in.close();
-        saveGame(propertiesList, Schilling,fileName);
+        s.saveGame(propertiesList, Schilling,fileName);
     }
 
     public static void init(Scanner in){
@@ -40,11 +37,11 @@ public class GameState{
                 System.out.println("Invalid save, make a new file?(y/n)");
                 String input2 = in.nextLine();
                 if (input2 == "y")
-                    loadGame(propertiesList, fileName);
+                    s.loadGame(propertiesList, fileName);
                     fileName = input;
             }
         }
-        Schilling = loadGame(propertiesList,fileName);
+        Schilling = s.loadGame(propertiesList,fileName);
         
         System.out.println("Hello, you have " + Schilling);
         consoleDisplay.printMainMenu();
