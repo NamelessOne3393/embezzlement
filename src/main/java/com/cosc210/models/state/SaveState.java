@@ -12,18 +12,16 @@ import org.json.JSONObject;
 
 import com.cosc210.models.FullOwnerShip;
 import com.cosc210.models.GameProperties;
+import com.cosc210.models.Loadable;
 import com.cosc210.models.ParcOwnerShip;;
 
 
 
 
-public class SaveState {
+public class SaveState implements Loadable{
     
-
-    static public int saveGame(ArrayList<GameProperties> properties,double money,String file){
-//public double moneyRate;
-  //  public int propertiesPrice, propertiesOwnership, numProperties;
-    //public String name;
+    @Override
+    public int saveGame(ArrayList<GameProperties> properties,double money,String file){
 
         try {
             File dir = new File("data");
@@ -52,12 +50,10 @@ public class SaveState {
 
         return 0;
     }
-    static public int loadGame(ArrayList<GameProperties> thing,String file){
 
-
-
+    @Override
+    public int loadGame(ArrayList<GameProperties> thing,String file){
         try {
-            
             File save = new File("data/"+file+".json");
 
             Scanner scan = new Scanner(save);
@@ -69,17 +65,16 @@ public class SaveState {
                 System.out.println(data.getJSONObject(i).getString("type"));
                 thing.add("full".equals(data.getJSONObject(i).getString("type"))?new FullOwnerShip(data.getJSONObject(i)):new ParcOwnerShip(data.getJSONObject(i)));
             }
-            
+            scan.close();
             return rawdata.getInt("money");
             
+            
         } catch (IOException e) {
-
+        
         thing.add(new ParcOwnerShip(100, "Badcompany", 1));
         thing.add(new FullOwnerShip(10, 0, "BadHouse"));
         }
-
-
-        return 100;
+        return 100000;
     }
 }
 

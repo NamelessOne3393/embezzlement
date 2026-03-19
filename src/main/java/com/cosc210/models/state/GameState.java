@@ -14,15 +14,26 @@ import com.cosc210.ui.inputHandler;
 public class GameState{
     private static double Schilling;
     private static ArrayList<GameProperties> propertiesList;
-    
-
+    private static SaveState s = new SaveState();
     private static String fileName = "";
     public static void main(String[] args) {
         
         MainJFrame.thing();
-        Schilling = 0; propertiesList = new ArrayList<>();
         Scanner in = new Scanner(System.in);
+        init(in);
+        while(true){
+            String input = in.nextLine();
+            if (consoleDisplay.menuAction(inputHandler.handleInput(input))) break;
+            consoleDisplay.printMainMenu();
+        }
+        in.close();
+        s.saveGame(propertiesList, Schilling,fileName);
+    }
+
+    public static void init(Scanner in){
+        Schilling = 0; propertiesList = new ArrayList<>(); fileName = "";
         while(fileName == ""){
+
             System.out.println("Enter your save file name");
             String input = in.nextLine();
             if (new File("data/"+input+".json").exists()){
@@ -34,9 +45,9 @@ public class GameState{
                     fileName = input;
             }
         }
-        Schilling = loadGame(propertiesList,fileName);
+        Schilling = s.loadGame(propertiesList,fileName);
         consoleDisplay.printMainMenu();
-
+        
         System.out.println("Hello, you have " + Schilling);
         while(true){
             String input = in.nextLine();
@@ -57,4 +68,11 @@ public class GameState{
     public static void setSchilling(double schilling){
         Schilling = schilling;
     }
+
+    public static void moneyChange(double money){
+        Schilling += money;
+    }
+    //i am aware only one of these is needed, but i like readability
+
+    
 }
