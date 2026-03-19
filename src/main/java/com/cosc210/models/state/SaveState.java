@@ -65,11 +65,12 @@ public class SaveState implements Loadable{
                 System.out.println(data.getJSONObject(i).getString("type"));
                 thing.add("full".equals(data.getJSONObject(i).getString("type"))?new FullOwnerShip(data.getJSONObject(i)):new ParcOwnerShip(data.getJSONObject(i)));
             }
-            
+            scan.close();
             return rawdata.getInt("money");
             
+            
         } catch (IOException e) {
-
+        
         thing.add(new ParcOwnerShip(100, "Badcompany", 1));
         thing.add(new FullOwnerShip(10, 0, "BadHouse"));
         }

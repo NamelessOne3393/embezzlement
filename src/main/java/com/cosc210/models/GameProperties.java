@@ -11,6 +11,6 @@ public abstract class GameProperties implements Exportable {
     public abstract void incOwn(int num) throws notEnoughMoneyException;
     public abstract void decOwn(int num)throws notEnoughOwnershipException;
     public abstract void sellAll()throws notEnoughOwnershipException;
-    public void TESTMODE(){TESTONLY = 1000;}
+    public void TESTMODE(){TESTONLY = Integer.MIN_VALUE;}
 
 }
