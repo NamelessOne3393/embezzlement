@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.cosc210.models.GameProperties;
-import static com.cosc210.models.state.SaveState.loadGame;
-import static com.cosc210.models.state.SaveState.saveGame;
 import com.cosc210.ui.MainJFrame;
 import com.cosc210.ui.consoleDisplay;
 import com.cosc210.ui.inputHandler;
@@ -17,8 +15,8 @@ public class GameState{
     private static SaveState s = new SaveState();
     private static String fileName = "";
     public static void main(String[] args) {
-        
-        MainJFrame.thing();
+        MainJFrame mainMenu = new MainJFrame();
+        mainMenu.thing();
         Scanner in = new Scanner(System.in);
         init(in);
         while(true){
@@ -41,7 +39,7 @@ public class GameState{
             } else{
                 System.out.println("Invalid save, make a new file?(y/n)");
                 String input2 = in.nextLine();
-                if (input2 == "y")loadGame(propertiesList, fileName);
+                if (input2 == "y")s.loadGame(propertiesList, fileName);
                     fileName = input;
             }
         }
@@ -49,13 +47,6 @@ public class GameState{
         consoleDisplay.printMainMenu();
         
         System.out.println("Hello, you have " + Schilling);
-        while(true){
-            String input = in.nextLine();
-            if (consoleDisplay.menuAction(inputHandler.handleInput(input))) break;
-            consoleDisplay.printMainMenu();
-        }
-        saveGame(propertiesList, Schilling,fileName);
-        MainJFrame mainMenu = new MainJFrame();
     }
 
     public static ArrayList<GameProperties> getPropertiesList() {
