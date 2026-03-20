@@ -64,13 +64,7 @@ public class FullOwnerShip extends GameProperties{
     //EFFECT: decreases numProperties to 0 and updates moneyRate
     @Override
     public void sellAll()throws notEnoughOwnershipException{
-        if(numProperties <= 0){
-            throw new notEnoughOwnershipException("none to sell");
-        } else {
-            setMoney(numProperties*propertiesPrice);
-            numProperties = 0;
-            moneyRate = 0;
-        }
+        decOwn(numProperties);
     }
     //EFFECT: Saves moneyRate, propertiesPrice, numProperties, and name     
     @Override
@@ -97,7 +91,18 @@ public class FullOwnerShip extends GameProperties{
             TESTONLY+=money;
         }
     }
+    
+    public boolean equals(GameProperties thing){
+        
+        JSONObject a = thing.ExportData();
+        JSONObject b = ExportData();
+        getMoney();
+        if(this.ExportData().toString().equals(thing.ExportData().toString())){
+            return true;
 
-
+        }
+        return false;
+    }
+    
 
 }
