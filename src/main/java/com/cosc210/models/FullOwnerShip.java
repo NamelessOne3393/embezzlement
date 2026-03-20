@@ -4,7 +4,6 @@ import org.json.JSONObject;
 
 import com.cosc210.models.exception.notEnoughMoneyException;
 import com.cosc210.models.exception.notEnoughOwnershipException;
-import com.cosc210.models.state.GameState;
 
 /**
  * This class reprents the buyable object that need to bought as whole
@@ -78,31 +77,4 @@ public class FullOwnerShip extends GameProperties{
 
         return out;
     }
-
-    public Double getMoney(){
-
-        return (TESTONLY==Integer.MIN_VALUE)?GameState.getSchilling():TESTONLY;
-    }
-    public void setMoney(int money){
-
-        if (TESTONLY==Integer.MIN_VALUE){
-            GameState.moneyChange(money);
-        }else{
-            TESTONLY+=money;
-        }
-    }
-    
-    public boolean equals(GameProperties thing){
-        
-        JSONObject a = thing.ExportData();
-        JSONObject b = ExportData();
-        getMoney();
-        if(this.ExportData().toString().equals(thing.ExportData().toString())){
-            return true;
-
-        }
-        return false;
-    }
-    
-
 }
