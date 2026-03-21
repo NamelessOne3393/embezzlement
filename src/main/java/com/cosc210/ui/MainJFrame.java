@@ -20,7 +20,7 @@ public class MainJFrame extends JFrame implements ActionListener {
     JTextArea output;
     public MainJFrame(){
         setTitle("Emezzlement(Main menu)");
-        setSize(500, 400);
+        setSize(800, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         
@@ -29,7 +29,7 @@ public class MainJFrame extends JFrame implements ActionListener {
         add(new JScrollPane(output), BorderLayout.CENTER);
 
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(5, 1));
+        panel.setLayout(new GridLayout(1, 5));
         walletBtn = new JButton("See Wallet");
         propertiesBtn = new JButton("See properties");
         buyBtn = new JButton("Buy Menu");
@@ -42,7 +42,7 @@ public class MainJFrame extends JFrame implements ActionListener {
         panel.add(sellBtn);
         panel.add(exitBtn);
         
-        add(panel, BorderLayout.EAST);
+        add(panel, BorderLayout.SOUTH);
         
         walletBtn.addActionListener(this);
         propertiesBtn.addActionListener(this); 
