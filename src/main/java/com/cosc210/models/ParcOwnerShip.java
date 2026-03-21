@@ -51,6 +51,7 @@ public class ParcOwnerShip extends GameProperties{
         }
         propOwnership -= num;
         moneyRate = propOwnership * propertiesPrice/100;
+        setMoney(num*propertiesPrice);
     }
     //MODIFIES: this
     //EFFECT: Buys all of propertiesOwnership and updates moneyRate

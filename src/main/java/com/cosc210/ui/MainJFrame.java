@@ -67,7 +67,7 @@ public class MainJFrame extends JFrame implements ActionListener {
         } else if(sourse == buyBtn){
             new BuyJFrame(); //will pop out to the buy menu frame
         } else if(sourse == sellBtn){
-            // new SellJFrame(); will pop out to the sell menu frame 
+            new SellJFrame(); //will pop out to the sell menu frame 
         } else if(sourse == exitBtn){
             System.exit(0);
         }
