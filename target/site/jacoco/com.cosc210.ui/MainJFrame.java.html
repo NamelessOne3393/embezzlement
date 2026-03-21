@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MainJFrame.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">embezzlement</a> &gt; <a href="index.source.html" class="el_package">com.cosc210.ui</a> &gt; <span class="el_source">MainJFrame.java</span></div><h1>MainJFrame.java</h1><pre class="source lang-java linenums">package com.cosc210.ui;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+import com.cosc210.models.state.GameState;
+
+
+public class MainJFrame extends JFrame implements ActionListener {
+    
+    JButton walletBtn, propertiesBtn, buyBtn, sellBtn, exitBtn;
+    JTextArea output;
+<span class="nc" id="L21">    public MainJFrame(){</span>
+<span class="nc" id="L22">        setTitle(&quot;Emezzlement(Main menu)&quot;);</span>
+<span class="nc" id="L23">        setSize(800, 700);</span>
+<span class="nc" id="L24">        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L25">        setLayout(new BorderLayout());</span>
+        
+<span class="nc" id="L27">        output = new JTextArea();</span>
+<span class="nc" id="L28">        output.setEditable(false);</span>
+<span class="nc" id="L29">        add(new JScrollPane(output), BorderLayout.CENTER);</span>
+
+<span class="nc" id="L31">        JPanel panel = new JPanel();</span>
+<span class="nc" id="L32">        panel.setLayout(new GridLayout(1, 5));</span>
+<span class="nc" id="L33">        walletBtn = new JButton(&quot;See Wallet&quot;);</span>
+<span class="nc" id="L34">        propertiesBtn = new JButton(&quot;See properties&quot;);</span>
+<span class="nc" id="L35">        buyBtn = new JButton(&quot;Buy Menu&quot;);</span>
+<span class="nc" id="L36">        sellBtn = new JButton(&quot;Sell Menu&quot;);</span>
+<span class="nc" id="L37">        exitBtn = new JButton(&quot;Exit&quot;);</span>
+
+<span class="nc" id="L39">        panel.add(walletBtn);</span>
+<span class="nc" id="L40">        panel.add(propertiesBtn);</span>
+<span class="nc" id="L41">        panel.add(buyBtn);</span>
+<span class="nc" id="L42">        panel.add(sellBtn);</span>
+<span class="nc" id="L43">        panel.add(exitBtn);</span>
+        
+<span class="nc" id="L45">        add(panel, BorderLayout.SOUTH);</span>
+        
+<span class="nc" id="L47">        walletBtn.addActionListener(this);</span>
+<span class="nc" id="L48">        propertiesBtn.addActionListener(this); </span>
+<span class="nc" id="L49">        buyBtn.addActionListener(this);</span>
+<span class="nc" id="L50">        sellBtn.addActionListener(this); </span>
+<span class="nc" id="L51">        exitBtn.addActionListener(this);</span>
+
+<span class="nc" id="L53">        setVisible(true);</span>
+<span class="nc" id="L54">    }</span>
+    
+    public void actionPerformed(ActionEvent e) {
+        
+<span class="nc" id="L58">        Object sourse = e.getSource();</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">        if(sourse == walletBtn){</span>
+<span class="nc" id="L60">            output.append(&quot;You have &quot; + GameState.getSchilling()+ &quot; Schillings \n&quot;);</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">        }else if( sourse == propertiesBtn){</span>
+<span class="nc" id="L62">            output.append(&quot;Properties\n&quot;);</span>
+<span class="nc" id="L63">            output.append(&quot;1       &quot; + GameState.getPropertiesList().get(0).name + &quot;      : &quot; </span>
+<span class="nc" id="L64">            + (GameState.getPropertiesList().get(0).propOwnership) + &quot;%\n&quot;);</span>
+<span class="nc" id="L65">            output.append(&quot;2        &quot; + GameState.getPropertiesList().get(1).name + &quot;      : &quot; </span>
+<span class="nc" id="L66">            + (GameState.getPropertiesList().get(1).numProperties) + &quot;\n&quot;);</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">        } else if(sourse == buyBtn){</span>
+<span class="nc" id="L68">            new BuyJFrame(); //will pop out to the buy menu frame</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">        } else if(sourse == sellBtn){</span>
+<span class="nc" id="L70">            new SellJFrame(); //will pop out to the sell menu frame </span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">        } else if(sourse == exitBtn){</span>
+<span class="nc" id="L72">            System.exit(0);</span>
+        }
+<span class="nc" id="L74">    }</span>
+
+    // the main menu has the current balance, rate of income, and a horizontally scrolling menu of all things money is being invested into.
+    // File has all the things related to saving and loading
+    // public void thing(){
+    //     JFrame frame = new JFrame(&quot;My First JFrame&quot;);
+    //     JLabel label = new JLabel(&quot;AAAAAAAAAAAAAAAA&quot;);
+    //     JButton button = new JButton(&quot;HI&quot;);
+    //     JMenuBar bar = new JMenuBar();
+    //     JMenu fileMenu = new JMenu(&quot;File&quot;);
+    //     JMenuItem quitItem = new JMenuItem(&quot;Quit Without Saving&quot;);
+    //     quitItem.setActionCommand(&quot;Q&quot;);
+    //     JMenuItem quitSaveItem = new JMenuItem(&quot;Quit and Save&quot;);
+    //     quitSaveItem.setActionCommand(&quot;SQ&quot;);
+    //     JMenuItem saveItem = new JMenuItem(&quot;Save&quot;);
+    //     saveItem.setActionCommand(&quot;S&quot;);
+    //     JMenuItem loadItem = new JMenuItem(&quot;Load&quot;);
+    //     loadItem.setActionCommand(&quot;L&quot;);
+    //     fileMenu.add(quitItem);
+    //     fileMenu.add(quitSaveItem);
+    //     fileMenu.add(saveItem);
+    //     fileMenu.add(loadItem);
+    //     bar.add(fileMenu);
+    //     frame.setJMenuBar(bar);
+    //     quitItem.addActionListener(this);
+    //     loadItem.addActionListener(this);
+    //     saveItem.addActionListener(this);
+    //     quitSaveItem.addActionListener(this);
+    //     button.setBounds(200,200,200,100);
+    //     frame.add(label);
+    //     frame.setSize(800,600); 
+    //     frame.add(button);
+    //     frame.setLayout(null);
+    //     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    //     frame.setVisible(true);
+
+
+
+    // }
+
+
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

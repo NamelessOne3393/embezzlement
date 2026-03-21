@@ -2,6 +2,7 @@ package com.cosc210.ui;
 
 import java.util.Scanner;
 
+import com.cosc210.models.exception.notEnoughExistException;
 import com.cosc210.models.exception.notEnoughMoneyException;
 import com.cosc210.models.exception.notEnoughOwnershipException;
 import com.cosc210.models.state.GameState;
@@ -78,7 +79,10 @@ public class consoleDisplay {
         }catch(notEnoughMoneyException e){
             System.out.println(e);
             System.out.println("Not enough money");
-
+        
+        }catch(notEnoughExistException e){
+            System.out.println(e);
+            System.out.println("Not enough exist");
         }finally { 
             System.out.println("Continuing  on");
         }
@@ -93,6 +97,9 @@ public class consoleDisplay {
             System.out.println(e);
             System.out.println("Not enough money");
 
+        }catch(notEnoughExistException e){
+            System.out.println(e);
+            System.out.println("Not enough exist");
         }finally { 
             System.out.println("Continuing  on");
         }
