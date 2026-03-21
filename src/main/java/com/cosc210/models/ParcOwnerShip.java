@@ -28,7 +28,7 @@ public class ParcOwnerShip extends GameProperties{
         moneyRate = propOwnership * propertiesPrice;
     }
     //MODIFIES: this
-    //EFFECT: Increase propertiesOwnership by num% and updates moneyRate
+    //EFFECT: Increase propertiesOwnership by num% and updates moneyRate and money
     @Override
     public void incOwn(int num) throws notEnoughMoneyException,notEnoughExistException{
         if(propOwnership + num > 100){
@@ -43,7 +43,7 @@ public class ParcOwnerShip extends GameProperties{
     }
     //REQUIRE: have enough ownership to sell
     //MODIFIES: this
-    //EFFECT: decreases propertiesOwnership by num% and updates moneyRate
+    //EFFECT: decreases propertiesOwnership by num% and updates moneyRate and money
     @Override
     public void decOwn(int num) throws notEnoughOwnershipException{
         if(propOwnership - num < 0){
@@ -54,7 +54,7 @@ public class ParcOwnerShip extends GameProperties{
         setMoney(num*propertiesPrice);
     }
     //MODIFIES: this
-    //EFFECT: Buys all of propertiesOwnership and updates moneyRate
+    //EFFECT: Buys all of propertiesOwnership and updates moneyRate and money
     public void buyAll()throws notEnoughMoneyException, notEnoughExistException{
         if(propOwnership == 100){
             throw new notEnoughExistException("Already have full ownership");

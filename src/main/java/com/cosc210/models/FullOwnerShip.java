@@ -14,7 +14,7 @@ public class FullOwnerShip extends GameProperties{
 
     //REQURES: propertiesPrice, numProperties > 0
     //MODIFIES: this
-    //EFFECT: Makes MoneyProperties have it attributes 
+    //EFFECT: Makes FullOwnerShip have it attributes 
     public FullOwnerShip(int propertiesPrice, int numProperties, String name){
         this.propertiesPrice = propertiesPrice; 
         this.numProperties = numProperties;
@@ -23,7 +23,7 @@ public class FullOwnerShip extends GameProperties{
     }
     //REQURES: propertiesPrice, numProperties > 0
     //MODIFIES: this
-    //EFFECT: Makes MoneyProperties have it attributes 
+    //EFFECT: Makes FullOwnerShip have it attributes 
     public FullOwnerShip(JSONObject obj){
         
         System.out.println(obj);
@@ -33,7 +33,7 @@ public class FullOwnerShip extends GameProperties{
         moneyRate = numProperties * propertiesPrice;
     }
     //MODIFIES: this
-    //EFFECT: Increase numProperties and updates moneyRate
+    //EFFECT: Increase numProperties and updates moneyRate and money
     @Override
     public void incOwn(int num) throws notEnoughMoneyException{
         if (getMoney() < num *propertiesPrice){
@@ -46,7 +46,7 @@ public class FullOwnerShip extends GameProperties{
     }
     //REQURES: have enought to properties to sell 
     //MODIFIES: this
-    //EFFECT: decreases numProperties by 1 and updates moneyRate
+    //EFFECT: decreases numProperties by 1 and updates moneyRate and money
     @Override
     public void decOwn(int num) throws notEnoughOwnershipException{
         if(numProperties <= 0){
@@ -60,7 +60,7 @@ public class FullOwnerShip extends GameProperties{
     }
     //REQURES: have properties to sell 
     //MODIFIES: this
-    //EFFECT: decreases numProperties to 0 and updates moneyRate
+    //EFFECT: decreases numProperties to 0 and updates moneyRate and money
     @Override
     public void sellAll()throws notEnoughOwnershipException{
         decOwn(numProperties);
