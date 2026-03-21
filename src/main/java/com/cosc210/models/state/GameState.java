@@ -15,8 +15,6 @@ public class GameState{
     private static SaveState s = new SaveState();
     private static String fileName = "";
     public static void main(String[] args) {
-        MainJFrame mainMenu = new MainJFrame();
-        mainMenu.thing();
         Scanner in = new Scanner(System.in);
         init(in);
         while(true){
@@ -25,6 +23,7 @@ public class GameState{
             consoleDisplay.printMainMenu();
         }
         in.close();
+        new MainJFrame();
         s.saveGame(propertiesList, Schilling,fileName);
     }
 
