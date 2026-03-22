@@ -65,7 +65,6 @@ public class MainJFrame extends JFrame implements ActionListener {
 
         setVisible(true);
         saveSystem = new SaveState();
-        output.append("Click load button to start\n");
     }
     
     public void actionPerformed(ActionEvent e) {

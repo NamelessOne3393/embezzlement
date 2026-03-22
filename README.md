@@ -54,7 +54,6 @@ Keegan likes making games and Harsh likes finances, a match made in heaven.
 - You can view the buy/sell menu by there respective button which displays a dropdown to choose between BadCompany and BadHouse in which you can add/remove multiple of badCompany/badHouse depending on your money/ownership. 
 - You can enter an any integer in the space below the drop down list to buy/sell from the property chosen then finilized by clicking the bottom botton labeled Buy/Sell, 
 then you will be given an meassage showing a succsesfull transaction.
-- You can save the state of my application by...
-- You can reload the state of my application by...
-
+- You can save the state of the game by clicking the save button on the bottom
+- You can reload the state of the game by clicking the load button on the bottom
  
