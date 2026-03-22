@@ -15,7 +15,11 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-24\bin"/>
+<<<<<<< HEAD
     <property name="sun.java.command" value="C:\Users\HARSHL~1\AppData\Local\Temp\surefire1809641091862215129\surefirebooter15329203265713919067.jar C:\Users\Harsh Lall\AppData\Local\Temp\surefire1809641091862215129 2026-03-21T20-54-37_269-jvmRun1 surefire1649981324625538458tmp surefire_010845142757874705945tmp"/>
+=======
+    <property name="sun.java.command" value="C:\Users\HARSHL~1\AppData\Local\Temp\surefire11092917248251026053\surefirebooter2489934388466725001.jar C:\Users\Harsh Lall\AppData\Local\Temp\surefire11092917248251026053 2026-03-09T13-41-50_283-jvmRun1 surefire13010137144460616672tmp surefire_017465456964040023809tmp"/>
+>>>>>>> main
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="D:\School\cosc210\EmbezzelmentGame\embezzlement\target\test-classes;D:\School\cosc210\EmbezzelmentGame\embezzlement\target\classes;C:\Users\Harsh Lall\.m2\repository\org\json\json\20251224\json-20251224.jar;C:\Users\Harsh Lall\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\Harsh Lall\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +34,11 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
+<<<<<<< HEAD
     <property name="surefire.real.class.path" value="C:\Users\HARSHL~1\AppData\Local\Temp\surefire1809641091862215129\surefirebooter15329203265713919067.jar"/>
+=======
+    <property name="surefire.real.class.path" value="C:\Users\HARSHL~1\AppData\Local\Temp\surefire11092917248251026053\surefirebooter2489934388466725001.jar"/>
+>>>>>>> main
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="24.0.2+12-54"/>
@@ -59,6 +67,6 @@
     <property name="java.class.version" value="68.0"/>
   </properties>
   <testcase name="rejectBadFormatedInput" classname="com.cosc210.inputHandlerTest" time="0"/>
-  <testcase name="acceptFirstNumberIfMultple" classname="com.cosc210.inputHandlerTest" time="0"/>
+  <testcase name="acceptFirstNumberIfMultple" classname="com.cosc210.inputHandlerTest" time="0.001"/>
   <testcase name="acceptValidNumber" classname="com.cosc210.inputHandlerTest" time="0"/>
 </testsuite>

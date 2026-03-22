@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com\cosc210\models\Loadable.class
 com\cosc210\ui\MainJFrame.class
 com\cosc210\models\state\GameState.class
@@ -13,3 +14,5 @@ com\cosc210\models\exception\notEnoughExistException.class
 com\cosc210\models\GameProperties.class
 com\cosc210\ui\consoleDisplay.class
 com\cosc210\ui\SellJFrame.class
+=======
+>>>>>>> main
