@@ -1,0 +1,18 @@
+<<<<<<< HEAD
+com\cosc210\models\Loadable.class
+com\cosc210\ui\MainJFrame.class
+com\cosc210\models\state\GameState.class
+com\cosc210\models\exception\notEnoughOwnershipException.class
+com\cosc210\ui\BuyJFrame.class
+com\cosc210\models\ParcOwnerShip.class
+com\cosc210\models\FullOwnerShip.class
+com\cosc210\models\state\SaveState.class
+com\cosc210\models\Exportable.class
+com\cosc210\models\exception\notEnoughMoneyException.class
+com\cosc210\ui\inputHandler.class
+com\cosc210\models\exception\notEnoughExistException.class
+com\cosc210\models\GameProperties.class
+com\cosc210\ui\consoleDisplay.class
+com\cosc210\ui\SellJFrame.class
+=======
+>>>>>>> main

@@ -1,71 +1,85 @@
 package com.cosc210.models;
 
+import org.json.JSONObject;
+
+import com.cosc210.models.exception.notEnoughMoneyException;
 import com.cosc210.models.exception.notEnoughOwnershipException;
 
 /**
  * This class reprents the buyable object that need to bought as whole
- * It will keep track of Money Rate, Original Price, number of it owned, 
- *  and it name
+ * It will keep track of Money Rate, Original Price, number of it owned,
+ * and it name
  **/
-public class FullOwnerShip extends GameProperties{
-    //REQURES: propertiesPrice, numProperties > 0
-    //MODIFIES: this
-    //EFFECT: Makes MoneyProperties have it attributes 
-    public FullOwnerShip(int propertiesPrice, int numProperties, String name){
-        this.propertiesPrice = propertiesPrice; 
+public class FullOwnerShip extends GameProperties {
+
+    // REQURES: propertiesPrice, numProperties > 0
+    // MODIFIES: this
+    // EFFECT: Makes FullOwnerShip have it attributes
+    public FullOwnerShip(int propertiesPrice, int numProperties, String name) {
+        this.propertiesPrice = propertiesPrice;
         this.numProperties = numProperties;
         this.name = name;
         moneyRate = numProperties * propertiesPrice;
     }
-    //MODIFIES: this
-    //EFFECT: Increase numProperties by 1 and updates moneyRate
-    @Override
-    public void incOwn(int num){
-        numProperties+= num;
+
+    // REQURES: propertiesPrice, numProperties > 0
+    // MODIFIES: this
+    // EFFECT: Makes FullOwnerShip have it attributes
+    public FullOwnerShip(JSONObject obj) {
+
+        System.out.println(obj);
+        this.propertiesPrice = obj.getInt("propertiesPrice");
+        this.numProperties = obj.getInt("numProperties");
+        this.name = obj.getString("name");
         moneyRate = numProperties * propertiesPrice;
     }
-    //REQURES: have enought to properties to sell 
-    //MODIFIES: this
-    //EFFECT: decreases numProperties by 1 and updates moneyRate
+
+    // MODIFIES: this
+    // EFFECT: Increase numProperties and updates moneyRate and money
     @Override
-    public void decOwn(int num) throws notEnoughOwnershipException{
-        if(numProperties <= 0){
+    public void incOwn(int num) throws notEnoughMoneyException {
+        if (getMoney() < num * propertiesPrice) {
+            throw new notEnoughMoneyException();
+        } else {
+            numProperties += num;
+            moneyRate = numProperties * propertiesPrice;
+            setMoney(-num * propertiesPrice);
+        }
+    }
+
+    // REQURES: have enought to properties to sell
+    // MODIFIES: this
+    // EFFECT: decreases numProperties by 1 and updates moneyRate and money
+    @Override
+    public void decOwn(int num) throws notEnoughOwnershipException {
+        if (numProperties - num < 0) {
             throw new notEnoughOwnershipException("Not enough to sell");
         } else {
-            numProperties-= num;
+            setMoney(num * propertiesPrice);
+            numProperties -= num;
             moneyRate = numProperties * propertiesPrice;
         }
+
     }
-    //REQURES: have properties to sell 
-    //MODIFIES: this
-    //EFFECT: decreases numProperties to 0 and updates moneyRate
+
+    // REQURES: have properties to sell
+    // MODIFIES: this
+    // EFFECT: decreases numProperties to 0 and updates moneyRate and money
     @Override
-    public void sellAll()throws notEnoughOwnershipException{
-        if(numProperties <= 0){
-            throw new notEnoughOwnershipException("none to sell");
-        } else {
-            numProperties = 0;
-            moneyRate = 0;
-        }
+    public void sellAll() throws notEnoughOwnershipException {
+        decOwn(numProperties);
     }
-    //EFFECT: Saves moneyRate, propertiesPrice, numProperties, and name     
+
+    // EFFECT: Saves moneyRate, propertiesPrice, numProperties, and name
     @Override
-    public void autoExportData(){
+    public JSONObject ExportData() {
+        JSONObject out = new JSONObject();
 
-    }
-    //EFFECT: Saves moneyRate, propertiesPrice, numProperties, and name automatically    
-    @Override
-    public void selectExportDate(){
-    //EFFECT: Loads moneyRate, propertiesPrice, numProperties, and name      
-    }
-    @Override    
-    public void autoImportData(String in){
+        out.put("name", name);
+        out.put("propertiesPrice", propertiesPrice);
+        out.put("numProperties", numProperties);
+        out.put("type", "full");
 
+        return out;
     }
-    //EFFECT: Loads moneyRate, propertiesPrice, numProperties, and name      
-    @Override    
-    public void selectImportDate(String in){
-
-    }
-
 }

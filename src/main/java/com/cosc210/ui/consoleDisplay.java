@@ -2,6 +2,8 @@ package com.cosc210.ui;
 
 import java.util.Scanner;
 
+import com.cosc210.models.exception.notEnoughExistException;
+import com.cosc210.models.exception.notEnoughMoneyException;
 import com.cosc210.models.exception.notEnoughOwnershipException;
 import com.cosc210.models.state.GameState;
 
@@ -70,21 +72,36 @@ public class consoleDisplay {
     //REQUIRES: num <= number of ownership available
     //EFFECT: Increases the ownership by the amount num
     public static void buyParAction(int num) {
-        if(GameState.getSchilling() < num * 0.01 * GameState.getPropertiesList().get(0).propertiesPrice){
-            System.out.println("Not enough money");
-        } else {
-            GameState.setSchilling(GameState.getSchilling() - num);
+
+        try{
             GameState.getPropertiesList().get(0).incOwn(num);
+
+        }catch(notEnoughMoneyException e){
+            System.out.println(e);
+            System.out.println("Not enough money");
+        
+        }catch(notEnoughExistException e){
+            System.out.println(e);
+            System.out.println("Not enough exist");
+        }finally { 
+            System.out.println("Continuing  on");
         }
     }
     //REQUIRES: num <= number of ownership available
     //EFFECT: Increases the num of properties by the amount num
     public static void buyWholeAction(int num) {
-        if(GameState.getSchilling() < num * GameState.getPropertiesList().get(1).propertiesPrice){
-            System.out.println("Not enough money");
-        } else {
-            GameState.setSchilling(GameState.getSchilling() - num * GameState.getPropertiesList().get(1).propertiesPrice );
+        try{
             GameState.getPropertiesList().get(1).incOwn(num);
+
+        }catch(notEnoughMoneyException e){
+            System.out.println(e);
+            System.out.println("Not enough money");
+
+        }catch(notEnoughExistException e){
+            System.out.println(e);
+            System.out.println("Not enough exist");
+        }finally { 
+            System.out.println("Continuing  on");
         }
     }
     //EFFECT: changes between parOwnership, fullOwnership 
@@ -98,26 +115,24 @@ public class consoleDisplay {
     //EFFECT: decreases the ownership by the amount num
     public static void sellParAction(int num){
         try{
-        if(GameState.getPropertiesList().get(0).propOwnership < num){
-            System.out.println("Not enough ownership to sell");
-        } else {
-            GameState.setSchilling(GameState.getSchilling() + num * GameState.getPropertiesList().get(0).propertiesPrice/100.0 );
             GameState.getPropertiesList().get(0).decOwn(num);
+        }catch(notEnoughOwnershipException e){
+            e.getStackTrace();
+            System.out.println("Not enough to sell");
+        }finally { 
+            System.out.println("Continuing  on");
         }
-        }catch(notEnoughOwnershipException e){e.getStackTrace();
-        }finally { System.out.println("Continuing  on");}
         
     }
     //EFFECT: decreases the num of properties 
     public static void sellWholeAction(int num){
         try{
-        if(GameState.getPropertiesList().get(1).propertiesPrice * num > GameState.getSchilling()){
-            System.out.println("Not enough money to sell " + num);
-        } else {
-            GameState.setSchilling(GameState.getSchilling() + num * GameState.getPropertiesList().get(1).propertiesPrice );
-            GameState.getPropertiesList().get(1).decOwn(num);
+            GameState.getPropertiesList().get(0).decOwn(num);
+        }catch(notEnoughOwnershipException e){
+            e.getStackTrace();
+            System.out.println("Not enough to sell");
+        }finally { 
+            System.out.println("Continuing  on");
         }
-        }catch(notEnoughOwnershipException e){e.getStackTrace();
-        }finally{System.out.println("Continuing on");}
     }
 }

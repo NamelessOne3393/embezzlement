@@ -45,3 +45,15 @@ Keegan likes making games and Harsh likes finances, a match made in heaven.
 - As a user, I want to be able to saving my game file between sessions  
 - As a user, I want to be able to farm money even after exiting the game
 
+
+## Instructions for End User
+- You can view the main menu when the program is run 
+- You can view the buy, sell, exit, wallet and properties list on main menu with each being a button on the bottom
+- You can view your total money by clicking the wallet button on the main menu
+- You can view the collection of business owned and amount owned by clicking the properties list button
+- You can view the buy/sell menu by there respective button which displays a dropdown to choose between BadCompany and BadHouse in which you can add/remove multiple of badCompany/badHouse depending on your money/ownership. 
+- You can enter an any integer in the space below the drop down list to buy/sell from the property chosen then finilized by clicking the bottom botton labeled Buy/Sell, 
+then you will be given an meassage showing a succsesfull transaction.
+- You can save the state of the game by clicking the save button on the bottom
+- You can reload the state of the game by clicking the load button on the bottom
+ 

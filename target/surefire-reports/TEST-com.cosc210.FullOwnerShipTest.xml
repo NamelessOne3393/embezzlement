@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.cosc210.FullOwnerShipTest" time="0.1" tests="7" errors="0" skipped="0" failures="0">
+=======
 <testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.cosc210.FullOwnerShipTest" time="0.117" tests="6" errors="0" skipped="0" failures="0">
+>>>>>>> main
   <properties>
     <property name="java.specification.version" value="24"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="D:\School\cosc210\EmbezzelmentGame\embezzlement\target\test-classes;D:\School\cosc210\EmbezzelmentGame\embezzlement\target\classes;C:\Users\Harsh Lall\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\Harsh Lall\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="java.class.path" value="D:\School\cosc210\EmbezzelmentGame\embezzlement\target\test-classes;D:\School\cosc210\EmbezzelmentGame\embezzlement\target\classes;C:\Users\Harsh Lall\.m2\repository\org\json\json\20251224\json-20251224.jar;C:\Users\Harsh Lall\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\Harsh Lall\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,9 +19,13 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-24\bin"/>
+<<<<<<< HEAD
+    <property name="sun.java.command" value="C:\Users\HARSHL~1\AppData\Local\Temp\surefire1809641091862215129\surefirebooter15329203265713919067.jar C:\Users\Harsh Lall\AppData\Local\Temp\surefire1809641091862215129 2026-03-21T20-54-37_269-jvmRun1 surefire1649981324625538458tmp surefire_010845142757874705945tmp"/>
+=======
     <property name="sun.java.command" value="C:\Users\HARSHL~1\AppData\Local\Temp\surefire11092917248251026053\surefirebooter2489934388466725001.jar C:\Users\Harsh Lall\AppData\Local\Temp\surefire11092917248251026053 2026-03-09T13-41-50_283-jvmRun1 surefire13010137144460616672tmp surefire_017465456964040023809tmp"/>
+>>>>>>> main
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="D:\School\cosc210\EmbezzelmentGame\embezzlement\target\test-classes;D:\School\cosc210\EmbezzelmentGame\embezzlement\target\classes;C:\Users\Harsh Lall\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\Harsh Lall\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="surefire.test.class.path" value="D:\School\cosc210\EmbezzelmentGame\embezzlement\target\test-classes;D:\School\cosc210\EmbezzelmentGame\embezzlement\target\classes;C:\Users\Harsh Lall\.m2\repository\org\json\json\20251224\json-20251224.jar;C:\Users\Harsh Lall\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\Harsh Lall\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\Harsh Lall"/>
     <property name="user.language" value="en"/>
@@ -30,7 +38,11 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
+<<<<<<< HEAD
+    <property name="surefire.real.class.path" value="C:\Users\HARSHL~1\AppData\Local\Temp\surefire1809641091862215129\surefirebooter15329203265713919067.jar"/>
+=======
     <property name="surefire.real.class.path" value="C:\Users\HARSHL~1\AppData\Local\Temp\surefire11092917248251026053\surefirebooter2489934388466725001.jar"/>
+>>>>>>> main
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="24.0.2+12-54"/>
@@ -58,8 +70,14 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="68.0"/>
   </properties>
+<<<<<<< HEAD
+  <testcase name="notEnoughOwnershipTest" classname="com.cosc210.FullOwnerShipTest" time="0.021"/>
+  <testcase name="toAndFromJSONTest" classname="com.cosc210.FullOwnerShipTest" time="0.002"/>
+  <testcase name="brokeTest" classname="com.cosc210.FullOwnerShipTest" time="0.001"/>
+=======
   <testcase name="notEnoughOwnershipTest" classname="com.cosc210.FullOwnerShipTest" time="0.01"/>
   <testcase name="incOwnOneTest" classname="com.cosc210.FullOwnerShipTest" time="0"/>
+>>>>>>> main
   <testcase name="incOwnXTest" classname="com.cosc210.FullOwnerShipTest" time="0"/>
   <testcase name="decOwnOnetest" classname="com.cosc210.FullOwnerShipTest" time="0"/>
   <testcase name="decOwnAlltest" classname="com.cosc210.FullOwnerShipTest" time="0"/>

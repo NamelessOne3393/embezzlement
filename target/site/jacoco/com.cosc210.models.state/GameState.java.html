@@ -1,40 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GameState.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">embezzlement</a> &gt; <a href="index.source.html" class="el_package">com.cosc210.models.state</a> &gt; <span class="el_source">GameState.java</span></div><h1>GameState.java</h1><pre class="source lang-java linenums">package com.cosc210.models.state;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import com.cosc210.models.FullOwnerShip;
 import com.cosc210.models.GameProperties;
 import com.cosc210.models.ParcOwnerShip;
-import com.cosc210.ui.consoleDisplay;
-import com.cosc210.ui.inputHandler;
+import com.cosc210.ui.MainJFrame;
 
-<span class="nc" id="L12">public class GameState{</span>
+<span class="nc" id="L10">public class GameState{</span>
     private static double Schilling;
     private static ArrayList&lt;GameProperties&gt; propertiesList;
+<span class="nc" id="L13">    private static SaveState s = new SaveState();</span>
+<span class="nc" id="L14">    private static String fileName = &quot;&quot;;</span>
     public static void main(String[] args) {
-<span class="nc" id="L16">        Schilling = 100; propertiesList = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L17">        System.out.println(&quot;Hello, you have &quot; + Schilling);</span>
-<span class="nc" id="L18">        consoleDisplay.printMainMenu();</span>
-<span class="nc" id="L19">        propertiesList.add(new ParcOwnerShip(100, &quot;Badcompany&quot;, 1));</span>
-<span class="nc" id="L20">        propertiesList.add(new FullOwnerShip(10, 0, &quot;BadHouse&quot;));</span>
-<span class="nc" id="L21">        Scanner in = new Scanner(System.in);</span>
-<span class="nc" id="L22">        while(true){</span>
-<span class="nc" id="L23">            String input = in.nextLine();</span>
-<span class="nc bnc" id="L24" title="All 2 branches missed.">            if (consoleDisplay.menuAction(inputHandler.handleInput(input))) break;</span>
-<span class="nc" id="L25">            consoleDisplay.printMainMenu();</span>
-        }
-<span class="nc" id="L27">    }</span>
+        // Scanner in = new Scanner(System.in);
+        // init(in);
+        // while(true){
+        //     String input = in.nextLine();
+        //     if (consoleDisplay.menuAction(inputHandler.handleInput(input))) break;
+        //     consoleDisplay.printMainMenu();
+        // }
+        // in.close();
+<span class="nc" id="L24">        Schilling = 100000;</span>
+<span class="nc" id="L25">        propertiesList = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L26">        propertiesList.add(new ParcOwnerShip(100, &quot;Badcompany&quot;, 1));</span>
+<span class="nc" id="L27">        propertiesList.add(new FullOwnerShip(10, 0, &quot;BadHouse&quot;));</span>
+<span class="nc" id="L28">        new MainJFrame();</span>
+<span class="nc" id="L29">    }</span>
+
+    // public static void init(Scanner in){
+    //     Schilling = 0; propertiesList = new ArrayList&lt;&gt;(); fileName = &quot;&quot;;
+    //     while(fileName == &quot;&quot;){
+
+    //         System.out.println(&quot;Enter your save file name&quot;);
+    //         String input = in.nextLine();
+    //         if (new File(&quot;data/&quot;+input+&quot;.json&quot;).exists()){
+    //             fileName = input;
+    //         } else{
+    //             System.out.println(&quot;Invalid save, make a new file?(y/n)&quot;);
+    //             String input2 = in.nextLine();
+    //             if (input2 == &quot;y&quot;)s.loadGame(propertiesList, fileName);
+    //                 fileName = input;
+    //         }
+    //     }
+    //     Schilling = s.loadGame(propertiesList,fileName);
+    //     consoleDisplay.printMainMenu();
+        
+    //     System.out.println(&quot;Hello, you have &quot; + Schilling);
+    // }
 
     public static ArrayList&lt;GameProperties&gt; getPropertiesList() {
-<span class="nc" id="L30">        return propertiesList;</span>
+<span class="nc" id="L53">        return propertiesList;</span>
     }
-
+    public static void setPropertiesList(ArrayList&lt;GameProperties&gt; newPropertiesList){
+<span class="nc" id="L56">        propertiesList = newPropertiesList;</span>
+<span class="nc" id="L57">    }</span>
     public static double getSchilling() {
-<span class="nc" id="L34">        return Schilling;</span>
+<span class="nc" id="L59">        return Schilling;</span>
     }
     public static void setSchilling(double schilling){
-<span class="nc" id="L37">        Schilling = schilling;</span>
-<span class="nc" id="L38">    }</span>
+<span class="nc" id="L62">        Schilling = schilling;</span>
+<span class="nc" id="L63">    }</span>
+
+    public static void moneyChange(double money){
+<span class="nc" id="L66">        Schilling += money;</span>
+<span class="nc" id="L67">    }</span>
+    //i am aware only one of these is needed, but i like readability
+
+    
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

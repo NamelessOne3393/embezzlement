@@ -1,84 +1,101 @@
 package com.cosc210.models;
 
+import org.json.JSONObject;
+
+import com.cosc210.models.exception.notEnoughExistException;
+import com.cosc210.models.exception.notEnoughMoneyException;
 import com.cosc210.models.exception.notEnoughOwnershipException;
 
 /**
  * This class reprents buyable object that need to be need
- * to be bought in increments 
- * */
-public class ParcOwnerShip extends GameProperties{  
-    //REQURES: propertiesPrice > 0
-    //MODIFIES: this
-    //EFFECT: Makes ParcOwnerProperties have it attributes 
-    public ParcOwnerShip(int propertiesPrice, String name, int propOwnership){
-        //Constructor for it attributes 
+ * to be bought in increments
+ */
+public class ParcOwnerShip extends GameProperties {
+    // REQURES: propertiesPrice > 0
+    // MODIFIES: this
+    // EFFECT: Makes ParcOwnerProperties have it attributes
+    public ParcOwnerShip(int propertiesPrice, String name, int propOwnership) {
+        // Constructor for it attributes
         this.name = name;
         this.propOwnership = propOwnership;
         this.propertiesPrice = propertiesPrice;
         moneyRate = propOwnership * propertiesPrice;
     }
-    //MODIFIES: this
-    //EFFECT: Increase propertiesOwnership by num% and updates moneyRate
-    @Override
-    public void incOwn(int num){
-        if(propOwnership + num > 100){
-            propOwnership = 100;
-            moneyRate = propertiesPrice;
-            System.out.println("You have bought " + (propOwnership - 100) + " out of " + num + " shares");
-            return;
-        }
-        propOwnership += num;
-        moneyRate = propOwnership * propertiesPrice * 0.01;
+
+    public ParcOwnerShip(JSONObject obj) {
+        this.propertiesPrice = obj.getInt("propertiesPrice");
+        this.propOwnership = obj.getInt("propOwnership");
+        this.name = obj.getString("name");
+        moneyRate = propOwnership * propertiesPrice;
     }
-    //REQUIRE: have enough ownership to sell
-    //MODIFIES: this
-    //EFFECT: decreases propertiesOwnership by num% and updates moneyRate
+
+    // MODIFIES: this
+    // EFFECT: Increase propertiesOwnership by num% and updates moneyRate and money
+    @Override
+    public void incOwn(int num) throws notEnoughMoneyException, notEnoughExistException {
+        if (propOwnership + num > 100) {
+            throw new notEnoughExistException(
+                    "Only " + (num + propOwnership - 100) + " shares out of " + num + " exist.");
+        } else {
+            if (num * propertiesPrice > this.getMoney()) {
+                throw new notEnoughMoneyException();
+            }
+            propOwnership += num;
+            moneyRate = propOwnership * propertiesPrice * 0.01;
+            this.setMoney(-num * propertiesPrice);
+
+        }
+    }
+
+    // REQUIRE: have enough ownership to sell
+    // MODIFIES: this
+    // EFFECT: decreases propertiesOwnership by num% and updates moneyRate and money
     @Override
     public void decOwn(int num) throws notEnoughOwnershipException{
-        if(propOwnership - num < 0){
-            throw new notEnoughOwnershipException("You don't have any " + name + " to sell");
+
+    public void decOwn(int num) throws notEnoughOwnershipException {
+        if (propOwnership - num < 0) {
+            throw new notEnoughOwnershipException(
+                    "Only " + (100 - propOwnership) + " shares out of " + num + " exist.");
         }
         propOwnership -= num;
-        moneyRate = propOwnership * propertiesPrice/100;
+        moneyRate = propOwnership * propertiesPrice / 100;
+        setMoney(num * propertiesPrice);
     }
-    //MODIFIES: this
-    //EFFECT: Buys all of propertiesOwnership and updates moneyRate
-    public void buyAll(){
-        if(propOwnership == 100){
-            System.out.println("Already have full ownership");
-            return;
+
+    // MODIFIES: this
+    // EFFECT: Buys all of propertiesOwnership and updates moneyRate and money
+    public void buyAll() throws notEnoughMoneyException, notEnoughExistException {
+        if (propOwnership == 100) {
+            throw new notEnoughExistException("Already have full ownership");
+
         }
-        propOwnership = 100;
-        moneyRate = propertiesPrice;
+        incOwn(100 - propOwnership);
     }
-    //MODIFIES: this
-    //EFFECT: decreases propertiesOwnership to 0 and no moneyRate
+
+    // MODIFIES: this
+    // EFFECT: decreases propertiesOwnership to 0 and no moneyRate
     @Override
     public void sellAll() throws notEnoughOwnershipException{
-        if(propOwnership == 0){
-            throw new notEnoughOwnershipException("You don't have any" + name+ " to sell");
+
+    public void sellAll() throws notEnoughOwnershipException {
+        if (propOwnership == 0) {
+            throw new notEnoughOwnershipException("You don't have any ownership to sell");
         }
-        propOwnership = 0;
-        moneyRate = 0;
+        decOwn(propOwnership);
     }
-    //EFFECT: Saves moneyRate, propertiesPrice, propOwnership, and name     
+
+    // EFFECT: Saves moneyRate, propertiesPrice, propOwnership, and name
     @Override
-    public void autoExportData(){
+    public JSONObject ExportData() {
+        JSONObject out = new JSONObject();
 
-    }
-    //EFFECT: Saves moneyRate, propertiesPrice, propOwnership, and name automatically    
-    @Override
-    public void selectExportDate(){
-    //EFFECT: Loads moneyRate, propertiesPrice, propOwnership, and name      
-    }
-    @Override    
-    public void autoImportData(String in){
+        out.put("name", name);
+        out.put("propertiesPrice", propertiesPrice);
+        out.put("propOwnership", propOwnership);
+        out.put("type", "parc");
 
-    }
-    //EFFECT: Loads moneyRate, propertiesPrice, propOwnership, and name      
-    @Override    
-    public void selectImportDate(String in){
-
+        return out;
     }
 
 }
