@@ -51,8 +51,6 @@ public class ParcOwnerShip extends GameProperties {
     // MODIFIES: this
     // EFFECT: decreases propertiesOwnership by num% and updates moneyRate and money
     @Override
-    public void decOwn(int num) throws notEnoughOwnershipException{
-
     public void decOwn(int num) throws notEnoughOwnershipException {
         if (propOwnership - num < 0) {
             throw new notEnoughOwnershipException(
@@ -76,8 +74,6 @@ public class ParcOwnerShip extends GameProperties {
     // MODIFIES: this
     // EFFECT: decreases propertiesOwnership to 0 and no moneyRate
     @Override
-    public void sellAll() throws notEnoughOwnershipException{
-
     public void sellAll() throws notEnoughOwnershipException {
         if (propOwnership == 0) {
             throw new notEnoughOwnershipException("You don't have any ownership to sell");
