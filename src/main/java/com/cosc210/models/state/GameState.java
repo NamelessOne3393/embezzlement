@@ -27,27 +27,29 @@ public class GameState{
         propertiesList.add(new FullOwnerShip(10, 0, "BadHouse"));
         new MainJFrame();
     }
-
-    // public static void init(Scanner in){
-    //     Schilling = 0; propertiesList = new ArrayList<>(); fileName = "";
-    //     while(fileName == ""){
-
-    //         System.out.println("Enter your save file name");
-    //         String input = in.nextLine();
-    //         if (new File("data/"+input+".json").exists()){
-    //             fileName = input;
-    //         } else{
-    //             System.out.println("Invalid save, make a new file?(y/n)");
-    //             String input2 = in.nextLine();
-    //             if (input2 == "y")s.loadGame(propertiesList, fileName);
-    //                 fileName = input;
-    //         }
-    //     }
-    //     Schilling = s.loadGame(propertiesList,fileName);
-    //     consoleDisplay.printMainMenu();
-        
-    //     System.out.println("Hello, you have " + Schilling);
-    // }
+/* 
+    public static void init(Scanner in){
+        Schilling = 0; propertiesList = new ArrayList<>(); fileName = "";
+        while(fileName == ""){
+            System.out.println("Enter your save file name");
+            String input = in.nextLine();
+            if (new File("data/"+input+".json").exists()){
+                fileName = input;
+            } else{
+                System.out.println("Invalid save, make a new file?(y/n)");
+                String input2 = in.nextLine();
+                if (input2 == "y")s.loadGame(propertiesList, fileName);
+                    fileName = input;
+            }
+        }
+        Schilling = s.loadGame(propertiesList,fileName);
+        consoleDisplay.printMainMenu();
+        System.out.println("Hello, you have " + Schilling);
+    }
+*/
+    public void init(){
+        Schilling = 0; propertiesList = new ArrayList<>(); fileName = "";
+    }
 
     public static ArrayList<GameProperties> getPropertiesList() {
         return propertiesList;
