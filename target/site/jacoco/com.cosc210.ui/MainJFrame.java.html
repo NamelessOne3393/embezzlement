@@ -65,69 +65,68 @@ public class MainJFrame extends JFrame implements ActionListener {
 
 <span class="nc" id="L66">        setVisible(true);</span>
 <span class="nc" id="L67">        saveSystem = new SaveState();</span>
-<span class="nc" id="L68">        output.append(&quot;Click load button to start\n&quot;);</span>
-<span class="nc" id="L69">    }</span>
-    
+<span class="nc" id="L68">    }</span>
+    @Override 
     public void actionPerformed(ActionEvent e) {
         
-<span class="nc" id="L73">        Object sourse = e.getSource();</span>
-<span class="nc bnc" id="L74" title="All 2 branches missed.">        if(sourse == walletBtn){</span>
-<span class="nc" id="L75">            output.append(&quot;You have &quot; + GameState.getSchilling()+ &quot; Schillings \n&quot;);</span>
-<span class="nc bnc" id="L76" title="All 2 branches missed.">        }else if( sourse == propertiesBtn){</span>
-<span class="nc bnc" id="L77" title="All 2 branches missed.">            if(GameState.getPropertiesList() == null){</span>
-<span class="nc" id="L78">                output.append(&quot;Need to load/new save file\n&quot;);</span>
-<span class="nc" id="L79">            } else{</span>
-<span class="nc" id="L80">                output.append(&quot;Properties\n&quot;);</span>
-<span class="nc" id="L81">                output.append(&quot;1       &quot; + GameState.getPropertiesList().get(0).name + &quot;      : &quot; </span>
-<span class="nc" id="L82">                + (GameState.getPropertiesList().get(0).propOwnership) + &quot;%\n&quot;);</span>
-<span class="nc" id="L83">                output.append(&quot;2        &quot; + GameState.getPropertiesList().get(1).name + &quot;      : &quot; </span>
-<span class="nc" id="L84">                + (GameState.getPropertiesList().get(1).numProperties) + &quot;\n&quot;);</span>
+<span class="nc" id="L72">        Object sourse = e.getSource();</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">        if(sourse == walletBtn){</span>
+<span class="nc" id="L74">            output.append(&quot;You have &quot; + GameState.getSchilling()+ &quot; Schillings \n&quot;);</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        }else if( sourse == propertiesBtn){</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">            if(GameState.getPropertiesList() == null){</span>
+<span class="nc" id="L77">                output.append(&quot;Need to load/new save file\n&quot;);</span>
+<span class="nc" id="L78">            } else{</span>
+<span class="nc" id="L79">                output.append(&quot;Properties\n&quot;);</span>
+<span class="nc" id="L80">                output.append(&quot;1       &quot; + GameState.getPropertiesList().get(0).name + &quot;      : &quot; </span>
+<span class="nc" id="L81">                + (GameState.getPropertiesList().get(0).propOwnership) + &quot;%\n&quot;);</span>
+<span class="nc" id="L82">                output.append(&quot;2        &quot; + GameState.getPropertiesList().get(1).name + &quot;      : &quot; </span>
+<span class="nc" id="L83">                + (GameState.getPropertiesList().get(1).numProperties) + &quot;\n&quot;);</span>
             }
-<span class="nc bnc" id="L86" title="All 2 branches missed.">        } else if(sourse == buyBtn){</span>
-<span class="nc bnc" id="L87" title="All 2 branches missed.">            if(GameState.getPropertiesList() == null){</span>
-<span class="nc" id="L88">                output.append(&quot;Need to load/new save file\n&quot;);</span>
-<span class="nc" id="L89">            } else {</span>
-<span class="nc" id="L90">                new BuyJFrame(); //will pop out to the buy menu frame</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">        } else if(sourse == buyBtn){</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">            if(GameState.getPropertiesList() == null){</span>
+<span class="nc" id="L87">                output.append(&quot;Need to load/new save file\n&quot;);</span>
+<span class="nc" id="L88">            } else {</span>
+<span class="nc" id="L89">                new BuyJFrame(); //will pop out to the buy menu frame</span>
             }
-<span class="nc bnc" id="L92" title="All 2 branches missed.">        } else if(sourse == sellBtn){</span>
-<span class="nc bnc" id="L93" title="All 2 branches missed.">            if(GameState.getPropertiesList() == null){</span>
-<span class="nc" id="L94">                output.append(&quot;Need to load/new save file\n&quot;);</span>
-<span class="nc" id="L95">            } else {</span>
-<span class="nc" id="L96">                new SellJFrame(); //will pop out to the sell menu frame </span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">        } else if(sourse == sellBtn){</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">            if(GameState.getPropertiesList() == null){</span>
+<span class="nc" id="L93">                output.append(&quot;Need to load/new save file\n&quot;);</span>
+<span class="nc" id="L94">            } else {</span>
+<span class="nc" id="L95">                new SellJFrame(); //will pop out to the sell menu frame </span>
             }
-<span class="nc bnc" id="L98" title="All 2 branches missed.">        }else if (sourse == saveBtn){</span>
-<span class="nc" id="L99">            String saveFile = JOptionPane.showInputDialog(this, &quot;Enter save file name: &quot;);</span>
-<span class="nc bnc" id="L100" title="All 4 branches missed.">            if(saveFile != null &amp;&amp; !saveFile.isEmpty()){</span>
-<span class="nc" id="L101">                saveSystem.saveGame(GameState.getPropertiesList(), GameState.getSchilling(), </span>
-<span class="nc" id="L102">                saveFile);</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">        }else if (sourse == saveBtn){</span>
+<span class="nc" id="L98">            String saveFile = JOptionPane.showInputDialog(this, &quot;Enter save file name: &quot;);</span>
+<span class="nc bnc" id="L99" title="All 4 branches missed.">            if(saveFile != null &amp;&amp; !saveFile.isEmpty()){</span>
+<span class="nc" id="L100">                saveSystem.saveGame(GameState.getPropertiesList(), GameState.getSchilling(), </span>
+<span class="nc" id="L101">                saveFile);</span>
             }
-<span class="nc" id="L104">            output.append(&quot;Game is saved as &quot; + saveFile + &quot;.json\n&quot;);</span>
-<span class="nc bnc" id="L105" title="All 2 branches missed.">        }else if (sourse == loadBtn){</span>
-<span class="nc" id="L106">            load = new JFileChooser();</span>
-<span class="nc" id="L107">            load.setCurrentDirectory(new File(&quot;data&quot;));</span>
-<span class="nc" id="L108">            load.setFileFilter(new FileNameExtensionFilter(&quot;JSON files&quot;,&quot;json&quot;));</span>
+<span class="nc" id="L103">            output.append(&quot;Game is saved as &quot; + saveFile + &quot;.json\n&quot;);</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">        }else if (sourse == loadBtn){</span>
+<span class="nc" id="L105">            load = new JFileChooser();</span>
+<span class="nc" id="L106">            load.setCurrentDirectory(new File(&quot;data&quot;));</span>
+<span class="nc" id="L107">            load.setFileFilter(new FileNameExtensionFilter(&quot;JSON files&quot;,&quot;json&quot;));</span>
 
-<span class="nc" id="L110">            int result = load.showOpenDialog(this);</span>
+<span class="nc" id="L109">            int result = load.showOpenDialog(this);</span>
             
-<span class="nc bnc" id="L112" title="All 2 branches missed.">            if(result == JFileChooser.APPROVE_OPTION){</span>
-<span class="nc" id="L113">                File selectedFile = load.getSelectedFile();</span>
-<span class="nc" id="L114">                String loadFile = selectedFile.getName().replace(&quot;.json&quot;, &quot;&quot;);</span>
-<span class="nc bnc" id="L115" title="All 2 branches missed.">                if(GameState.getPropertiesList() == null){</span>
-<span class="nc" id="L116">                    GameState.setPropertiesList(new ArrayList&lt;&gt;());</span>
-<span class="nc" id="L117">                }else{</span>
-<span class="nc" id="L118">                    GameState.getPropertiesList().clear();</span>
+<span class="nc bnc" id="L111" title="All 2 branches missed.">            if(result == JFileChooser.APPROVE_OPTION){</span>
+<span class="nc" id="L112">                File selectedFile = load.getSelectedFile();</span>
+<span class="nc" id="L113">                String loadFile = selectedFile.getName().replace(&quot;.json&quot;, &quot;&quot;);</span>
+<span class="nc bnc" id="L114" title="All 2 branches missed.">                if(GameState.getPropertiesList() == null){</span>
+<span class="nc" id="L115">                    GameState.setPropertiesList(new ArrayList&lt;&gt;());</span>
+<span class="nc" id="L116">                }else{</span>
+<span class="nc" id="L117">                    GameState.getPropertiesList().clear();</span>
                 }
-<span class="nc" id="L120">                int money = saveSystem.loadGame(GameState.getPropertiesList(), loadFile);</span>
-<span class="nc" id="L121">                GameState.setSchilling(money);</span>
+<span class="nc" id="L119">                int money = saveSystem.loadGame(GameState.getPropertiesList(), loadFile);</span>
+<span class="nc" id="L120">                GameState.setSchilling(money);</span>
 
-<span class="nc" id="L123">                output.append(&quot;Loaded file: &quot; + loadFile +&quot;\n&quot;);</span>
-<span class="nc" id="L124">                output.append(&quot;Money: &quot; + money + &quot;\n&quot; );</span>
+<span class="nc" id="L122">                output.append(&quot;Loaded file: &quot; + loadFile +&quot;\n&quot;);</span>
+<span class="nc" id="L123">                output.append(&quot;Money: &quot; + money + &quot;\n&quot; );</span>
             }
-<span class="nc bnc" id="L126" title="All 2 branches missed.">        }else if(sourse == exitBtn){</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">        }else if(sourse == exitBtn){</span>
             
-<span class="nc" id="L128">            System.exit(0);</span>
+<span class="nc" id="L127">            System.exit(0);</span>
         }
-<span class="nc" id="L130">    }</span>
+<span class="nc" id="L129">    }</span>
 
     // the main menu has the current balance, rate of income, and a horizontally scrolling menu of all things money is being invested into.
     // File has all the things related to saving and loading

@@ -50,20 +50,21 @@ public class BuyJFrame extends JFrame implements ActionListener{
 <span class="nc" id="L50">        add(buyCustomBtn, BorderLayout.SOUTH);</span>
 <span class="nc" id="L51">        setVisible(true);</span>
 <span class="nc" id="L52">    }</span>
+    @Override
     public void actionPerformed(ActionEvent e){
-<span class="nc" id="L54">        int idx = propertySelect.getSelectedIndex();</span>
+<span class="nc" id="L55">        int idx = propertySelect.getSelectedIndex();</span>
         try {
-<span class="nc" id="L56">            int amount = Integer.parseInt(amountField.getText());</span>
-<span class="nc" id="L57">            GameState.getPropertiesList().get(idx).incOwn(amount);</span>
-<span class="nc" id="L58">            output.append(&quot;You have bought &quot; + amount + &quot; \n&quot;);</span>
-<span class="nc" id="L59">        } catch (NumberFormatException er) {</span>
-<span class="nc" id="L60">            output.append(&quot;Invalid number\n&quot;);</span>
-<span class="nc" id="L61">        } catch(notEnoughMoneyException er){</span>
-<span class="nc" id="L62">            output.append(&quot;Not enough money\n&quot;);</span>
-<span class="nc" id="L63">        } catch(notEnoughExistException er){</span>
-<span class="nc" id="L64">            output.append(&quot;Too many shares\n&quot;);</span>
+<span class="nc" id="L57">            int amount = Integer.parseInt(amountField.getText());</span>
+<span class="nc" id="L58">            GameState.getPropertiesList().get(idx).incOwn(amount);</span>
+<span class="nc" id="L59">            output.append(&quot;You have bought &quot; + amount + &quot; \n&quot;);</span>
+<span class="nc" id="L60">        } catch (NumberFormatException er) {</span>
+<span class="nc" id="L61">            output.append(&quot;Invalid number\n&quot;);</span>
+<span class="nc" id="L62">        } catch(notEnoughMoneyException er){</span>
+<span class="nc" id="L63">            output.append(&quot;Not enough money\n&quot;);</span>
+<span class="nc" id="L64">        } catch(notEnoughExistException er){</span>
+<span class="nc" id="L65">            output.append(&quot;Too many shares\n&quot;);</span>
         }
-<span class="nc" id="L66">    }</span>
+<span class="nc" id="L67">    }</span>
     
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

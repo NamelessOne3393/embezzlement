@@ -66,7 +66,7 @@ public class MainJFrame extends JFrame implements ActionListener {
         setVisible(true);
         saveSystem = new SaveState();
     }
-    
+    @Override 
     public void actionPerformed(ActionEvent e) {
         
         Object sourse = e.getSource();
@@ -123,7 +123,6 @@ public class MainJFrame extends JFrame implements ActionListener {
                 output.append("Money: " + money + "\n" );
             }
         }else if(sourse == exitBtn){
-            
             System.exit(0);
         }
     }

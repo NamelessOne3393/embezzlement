@@ -49,17 +49,18 @@ public class SellJFrame extends JFrame implements ActionListener {
 <span class="nc" id="L49">        add(sellCustomBtn, BorderLayout.SOUTH);</span>
 <span class="nc" id="L50">        setVisible(true);</span>
 <span class="nc" id="L51">    }</span>
+    @Override
     public void actionPerformed(ActionEvent e){
-<span class="nc" id="L53">        int idx = propertySelect.getSelectedIndex();</span>
+<span class="nc" id="L54">        int idx = propertySelect.getSelectedIndex();</span>
         try {
-<span class="nc" id="L55">            int amount = Integer.parseInt(amountField.getText());</span>
-<span class="nc" id="L56">            GameState.getPropertiesList().get(idx).decOwn(amount);</span>
-<span class="nc" id="L57">            output.append(&quot;You have sold &quot; + amount + &quot; \n&quot;);</span>
-<span class="nc" id="L58">        } catch (NumberFormatException er) {</span>
-<span class="nc" id="L59">            output.append(&quot;Invalid number\n&quot;);</span>
-<span class="nc" id="L60">        } catch(notEnoughOwnershipException er){</span>
-<span class="nc" id="L61">            output.append(&quot;Not enough ownership\n&quot;);</span>
+<span class="nc" id="L56">            int amount = Integer.parseInt(amountField.getText());</span>
+<span class="nc" id="L57">            GameState.getPropertiesList().get(idx).decOwn(amount);</span>
+<span class="nc" id="L58">            output.append(&quot;You have sold &quot; + amount + &quot; \n&quot;);</span>
+<span class="nc" id="L59">        } catch (NumberFormatException er) {</span>
+<span class="nc" id="L60">            output.append(&quot;Invalid number\n&quot;);</span>
+<span class="nc" id="L61">        } catch(notEnoughOwnershipException er){</span>
+<span class="nc" id="L62">            output.append(&quot;Not enough ownership\n&quot;);</span>
         } 
-<span class="nc" id="L63">    }</span>
+<span class="nc" id="L64">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

@@ -50,6 +50,7 @@ public class BuyJFrame extends JFrame implements ActionListener{
         add(buyCustomBtn, BorderLayout.SOUTH);
         setVisible(true);
     }
+    @Override
     public void actionPerformed(ActionEvent e){
         int idx = propertySelect.getSelectedIndex();
         try {

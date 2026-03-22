@@ -49,6 +49,7 @@ public class SellJFrame extends JFrame implements ActionListener {
         add(sellCustomBtn, BorderLayout.SOUTH);
         setVisible(true);
     }
+    @Override
     public void actionPerformed(ActionEvent e){
         int idx = propertySelect.getSelectedIndex();
         try {
