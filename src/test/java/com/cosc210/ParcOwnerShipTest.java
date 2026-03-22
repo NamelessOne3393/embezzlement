@@ -90,37 +90,35 @@ public class ParcOwnerShipTest {
     }
 
     @Test
-    public void decOwnXtest(){
-        try{
-        try{
-        ob.decOwn(5);
-        assertEquals(45, ob.propOwnership, 0.0001);
-        assertEquals(225, ob.moneyRate,0.0001);
-        }catch(notEnoughOwnershipException e){
+    public void decOwnXtest() {
+        try {
+            ob.decOwn(5);
+            assertEquals(45, ob.propOwnership, 0.0001);
+            assertEquals(225, ob.moneyRate, 0.0001);
+        } catch (notEnoughOwnershipException e) {
             fail("Should not throw an exception");
         }
-        try{
-        ob.decOwn(50);
+        try {
+            ob.decOwn(50);
             fail("Should throw an exception");
-        }catch(notEnoughOwnershipException e){
+        } catch (notEnoughOwnershipException e) {
             assertTrue(true);
         }
     }
 
     @Test
-    public void decOwnAlltest(){
-        try{
-        try{
-        ob.sellAll();
-        assertEquals(0, ob.propOwnership, 0.0001);
-        assertEquals(0, ob.moneyRate,0.0001);
-        }catch(notEnoughOwnershipException e){
+    public void decOwnAlltest() {
+        try {
+            ob.sellAll();
+            assertEquals(0, ob.propOwnership, 0.0001);
+            assertEquals(0, ob.moneyRate, 0.0001);
+        } catch (notEnoughOwnershipException e) {
             fail("Should not throw an exception");
         }
-        try{
-        ob.sellAll();
+        try {
+            ob.sellAll();
             fail("Should throw an exception");
-        }catch(notEnoughOwnershipException e){
+        } catch (notEnoughOwnershipException e) {
             assertTrue(true);
         }
     }
