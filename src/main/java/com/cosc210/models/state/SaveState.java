@@ -56,8 +56,15 @@ public class SaveState implements Loadable{
         try {
             File save = new File("data/"+file+".json");
 
+            // Scanner scan = new Scanner(save);
+            // JSONObject rawdata = new JSONObject(scan.next());
             Scanner scan = new Scanner(save);
-            JSONObject rawdata = new JSONObject(scan.next());
+            StringBuilder jsonString = new StringBuilder();
+            while (scan.hasNextLine()) {
+                jsonString.append(scan.nextLine());
+            }
+            scan.close();
+            JSONObject rawdata = new JSONObject(jsonString.toString());
             System.out.println(rawdata);
             JSONArray data = rawdata.getJSONArray("companies");
             

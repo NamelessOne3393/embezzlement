@@ -5,10 +5,10 @@ embezzlement,com.cosc210.models,FullOwnerShip,0,146,0,4,0,33,0,8,0,6
 embezzlement,com.cosc210.models.exception,notEnoughOwnershipException,3,4,0,0,1,1,1,1,1,1
 embezzlement,com.cosc210.models.exception,notEnoughExistException,3,4,0,0,1,1,1,1,1,1
 embezzlement,com.cosc210.models.exception,notEnoughMoneyException,4,3,0,0,1,1,1,1,1,1
-embezzlement,com.cosc210.models.state,SaveState,167,0,6,0,32,0,6,0,3,0
-embezzlement,com.cosc210.models.state,GameState,106,0,8,0,34,0,12,0,8,0
+embezzlement,com.cosc210.models.state,SaveState,182,0,8,0,36,0,7,0,3,0
+embezzlement,com.cosc210.models.state,GameState,52,0,0,0,17,0,8,0,8,0
 embezzlement,com.cosc210.ui,SellJFrame,153,0,0,0,32,0,2,0,2,0
-embezzlement,com.cosc210.ui,MainJFrame,199,0,10,0,44,0,7,0,2,0
+embezzlement,com.cosc210.ui,MainJFrame,360,0,28,0,83,0,16,0,2,0
 embezzlement,com.cosc210.ui,consoleDisplay,286,0,12,0,78,0,21,0,12,0
 embezzlement,com.cosc210.ui,inputHandler,3,29,0,2,1,7,1,2,1,1
 embezzlement,com.cosc210.ui,BuyJFrame,159,0,0,0,34,0,2,0,2,0

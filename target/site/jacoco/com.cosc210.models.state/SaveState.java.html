@@ -56,25 +56,32 @@ import com.cosc210.models.ParcOwnerShip;;
         try {
 <span class="nc" id="L57">            File save = new File(&quot;data/&quot;+file+&quot;.json&quot;);</span>
 
-<span class="nc" id="L59">            Scanner scan = new Scanner(save);</span>
-<span class="nc" id="L60">            JSONObject rawdata = new JSONObject(scan.next());</span>
-<span class="nc" id="L61">            System.out.println(rawdata);</span>
-<span class="nc" id="L62">            JSONArray data = rawdata.getJSONArray(&quot;companies&quot;);</span>
-            
-<span class="nc bnc" id="L64" title="All 2 branches missed.">            for (int i = 0; i &lt; data.length();i++){</span>
-<span class="nc" id="L65">                System.out.println(data.getJSONObject(i).getString(&quot;type&quot;));</span>
-<span class="nc bnc" id="L66" title="All 2 branches missed.">                thing.add(&quot;full&quot;.equals(data.getJSONObject(i).getString(&quot;type&quot;))?new FullOwnerShip(data.getJSONObject(i)):new ParcOwnerShip(data.getJSONObject(i)));</span>
+            // Scanner scan = new Scanner(save);
+            // JSONObject rawdata = new JSONObject(scan.next());
+<span class="nc" id="L61">            Scanner scan = new Scanner(save);</span>
+<span class="nc" id="L62">            StringBuilder jsonString = new StringBuilder();</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">            while (scan.hasNextLine()) {</span>
+<span class="nc" id="L64">                jsonString.append(scan.nextLine());</span>
             }
-<span class="nc" id="L68">            scan.close();</span>
-<span class="nc" id="L69">            return rawdata.getInt(&quot;money&quot;);</span>
+<span class="nc" id="L66">            scan.close();</span>
+<span class="nc" id="L67">            JSONObject rawdata = new JSONObject(jsonString.toString());</span>
+<span class="nc" id="L68">            System.out.println(rawdata);</span>
+<span class="nc" id="L69">            JSONArray data = rawdata.getJSONArray(&quot;companies&quot;);</span>
+            
+<span class="nc bnc" id="L71" title="All 2 branches missed.">            for (int i = 0; i &lt; data.length();i++){</span>
+<span class="nc" id="L72">                System.out.println(data.getJSONObject(i).getString(&quot;type&quot;));</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">                thing.add(&quot;full&quot;.equals(data.getJSONObject(i).getString(&quot;type&quot;))?new FullOwnerShip(data.getJSONObject(i)):new ParcOwnerShip(data.getJSONObject(i)));</span>
+            }
+<span class="nc" id="L75">            scan.close();</span>
+<span class="nc" id="L76">            return rawdata.getInt(&quot;money&quot;);</span>
             
             
-<span class="nc" id="L72">        } catch (IOException e) {</span>
+<span class="nc" id="L79">        } catch (IOException e) {</span>
         
-<span class="nc" id="L74">        thing.add(new ParcOwnerShip(100, &quot;Badcompany&quot;, 1));</span>
-<span class="nc" id="L75">        thing.add(new FullOwnerShip(10, 0, &quot;BadHouse&quot;));</span>
+<span class="nc" id="L81">        thing.add(new ParcOwnerShip(100, &quot;Badcompany&quot;, 1));</span>
+<span class="nc" id="L82">        thing.add(new FullOwnerShip(10, 0, &quot;BadHouse&quot;));</span>
         }
-<span class="nc" id="L77">        return 100000;</span>
+<span class="nc" id="L84">        return 100000;</span>
     }
 }
 
