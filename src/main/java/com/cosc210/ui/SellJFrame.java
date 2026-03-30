@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import com.cosc210.models.exception.notEnoughOwnershipException;
 import com.cosc210.models.state.GameState;
 
+// This frame is the sell menu that pop up and handles selling 
 public class SellJFrame extends JFrame implements ActionListener {
     JButton sellCustomBtn;
     JComboBox<String> propertySelect;

@@ -5,6 +5,9 @@ import com.cosc210.models.exception.notEnoughMoneyException;
 import com.cosc210.models.exception.notEnoughOwnershipException;
 import com.cosc210.models.state.GameState;
 
+/* 
+    This is the abstract class that makes to the basic of the Full and parc ownership class
+*/
 public abstract class GameProperties implements Exportable { 
     public double moneyRate;
     public int propertiesPrice, propOwnership,numProperties;

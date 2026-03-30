@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+//Interface for saving and loading
 public interface Loadable {
     public int saveGame(ArrayList<GameProperties> properties,double money,String file);
     public int loadGame(ArrayList<GameProperties> thing,String file);

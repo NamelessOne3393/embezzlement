@@ -6,7 +6,9 @@ import com.cosc210.models.FullOwnerShip;
 import com.cosc210.models.GameProperties;
 import com.cosc210.models.ParcOwnerShip;
 import com.cosc210.ui.MainJFrame;
-
+/*
+    This class is incharge of making the money, game properties and the rest work in the background
+*/
 public class GameState{
     private static double Schilling;
     private static ArrayList<GameProperties> propertiesList;

@@ -19,7 +19,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import com.cosc210.models.state.GameState;
 import com.cosc210.models.state.SaveState;
 
-
+//This frame the main menu that the user see for accessing everything 
 public class MainJFrame extends JFrame implements ActionListener {
     JFileChooser load;
     JButton walletBtn, propertiesBtn, buyBtn, sellBtn,saveBtn, loadBtn, exitBtn;

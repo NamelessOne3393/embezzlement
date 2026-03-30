@@ -18,6 +18,7 @@ import com.cosc210.models.exception.notEnoughExistException;
 import com.cosc210.models.exception.notEnoughMoneyException;
 import com.cosc210.models.state.GameState;
 
+// This frame is the buy menu that pop up and handles buying 
 public class BuyJFrame extends JFrame implements ActionListener{
     JButton buyCustomBtn;
     JComboBox<String> propertySelect;

@@ -16,7 +16,9 @@ import com.cosc210.models.Loadable;
 import com.cosc210.models.ParcOwnerShip;;
 
 
-
+/*
+    This class is incharge of saving and loading 
+*/
 
 public class SaveState implements Loadable{
     
