@@ -60,9 +60,9 @@ then you will be given an meassage showing a succsesfull transaction.
 
 
 #### Example Logs
-Mon Mar 30 20:54:51 PDT 2026 : Save successfully loaded
-Mon Mar 30 20:55:02 PDT 2026 : Money set to 98000.0 from 100000.0
-Mon Mar 30 20:55:02 PDT 2026 : Bought 20 of Badcompany
-Mon Mar 30 20:55:10 PDT 2026 : Money set to 98500.0 from 98000.0
-Mon Mar 30 20:55:10 PDT 2026 : Sold 5 of Badcompany
-Mon Mar 30 20:55:16 PDT 2026 : Load successfully saved
+- Mon Mar 30 20:54:51 PDT 2026 : Save successfully loaded
+- Mon Mar 30 20:55:02 PDT 2026 : Money set to 98000.0 from 100000.0
+- Mon Mar 30 20:55:02 PDT 2026 : Bought 20 of Badcompany
+- Mon Mar 30 20:55:10 PDT 2026 : Money set to 98500.0 from 98000.0
+- Mon Mar 30 20:55:10 PDT 2026 : Sold 5 of Badcompany
+- Mon Mar 30 20:55:16 PDT 2026 : Load successfully saved
