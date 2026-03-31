@@ -59,9 +59,9 @@ then you will be given an meassage showing a succsesfull transaction.
 
 ## Phase 4: Task 3
 - I would to refactor the Full, parc ownership and GameProperties to have buy and sell be it own class which is just implemented to Game Properties to not 
-have each of the classes do only one thing responsible
+have each of the classes do more than one thing responsible
 - I would make save and game state singleton class as they will only need one instance 
-- I would change how the main menu frame works as it has alot of code that can be made into a new methods to not have a lonk if else chain 
+- I would change how the main menu frame works as it has alot of code that can be made into a new methods to not have a long if else chain and makes it simpler to read 
 #### Example Logs
 - Mon Mar 30 20:54:51 PDT 2026 : Save successfully loaded
 - Mon Mar 30 20:55:02 PDT 2026 : Money set to 98000.0 from 100000.0
