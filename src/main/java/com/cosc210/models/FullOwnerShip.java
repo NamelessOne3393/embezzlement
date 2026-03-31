@@ -39,11 +39,13 @@ public class FullOwnerShip extends GameProperties {
     @Override
     public void incOwn(int num) throws notEnoughMoneyException {
         if (getMoney() < num * propertiesPrice) {
+            EventLog.getInstance().logEvent(new Event("Failed to bought "+num+" of "+name));
             throw new notEnoughMoneyException();
         } else {
             numProperties += num;
             moneyRate = numProperties * propertiesPrice;
             setMoney(-num * propertiesPrice);
+            EventLog.getInstance().logEvent(new Event("Bought "+num+" of "+name));
         }
     }
 
@@ -53,11 +55,14 @@ public class FullOwnerShip extends GameProperties {
     @Override
     public void decOwn(int num) throws notEnoughOwnershipException {
         if (numProperties - num < 0) {
+            EventLog.getInstance().logEvent(new Event("Failed to sold "+num+" of "+name));
             throw new notEnoughOwnershipException("Not enough to sell");
         } else {
             setMoney(num * propertiesPrice);
             numProperties -= num;
             moneyRate = numProperties * propertiesPrice;
+
+            EventLog.getInstance().logEvent(new Event("Sold "+num+" of "+name));
         }
 
     }

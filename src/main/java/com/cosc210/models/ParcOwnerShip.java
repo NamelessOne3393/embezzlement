@@ -34,15 +34,19 @@ public class ParcOwnerShip extends GameProperties {
     @Override
     public void incOwn(int num) throws notEnoughMoneyException, notEnoughExistException {
         if (propOwnership + num > 100) {
+            EventLog.getInstance().logEvent(new Event("Failed to bought "+num+" of "+name));
+
             throw new notEnoughExistException(
                     "Only " + (num + propOwnership - 100) + " shares out of " + num + " exist.");
         } else {
             if (num * propertiesPrice > this.getMoney()) {
+            EventLog.getInstance().logEvent(new Event("Failed to bought "+num+" of "+name));
                 throw new notEnoughMoneyException();
             }
             propOwnership += num;
             moneyRate = propOwnership * propertiesPrice * 0.01;
             this.setMoney(-num * propertiesPrice);
+            EventLog.getInstance().logEvent(new Event("Bought "+num+" of "+name));
 
         }
     }
@@ -53,12 +57,16 @@ public class ParcOwnerShip extends GameProperties {
     @Override
     public void decOwn(int num) throws notEnoughOwnershipException {
         if (propOwnership - num < 0) {
+            EventLog.getInstance().logEvent(new Event("Failed to sold "+num+" of "+name));
+
             throw new notEnoughOwnershipException(
                     "Only " + (100 - propOwnership) + " shares out of " + num + " exist.");
         }
         propOwnership -= num;
         moneyRate = propOwnership * propertiesPrice / 100;
         setMoney(num * propertiesPrice);
+        EventLog.getInstance().logEvent(new Event("Sold "+num+" of "+name));
+
     }
 
     // MODIFIES: this

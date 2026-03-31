@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -16,6 +18,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import com.cosc210.models.Event;
+import com.cosc210.models.EventLog;
 import com.cosc210.models.state.GameState;
 import com.cosc210.models.state.SaveState;
 
@@ -63,16 +67,28 @@ public class MainJFrame extends JFrame implements ActionListener {
         loadBtn.addActionListener(this);
         exitBtn.addActionListener(this);
 
+        addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosing(WindowEvent e) {
+                    
+                    for (Event u : EventLog.getInstance()) {
+                        System.out.println(u.getDate()+" : "+u.getDescription());
+                    }
+
+                }
+            });
+
         setVisible(true);
         saveSystem = new SaveState();
     }
+    
     @Override 
     public void actionPerformed(ActionEvent e) {
         
-        Object sourse = e.getSource();
-        if(sourse == walletBtn){
+        Object source = e.getSource();
+        if(source == walletBtn){
             output.append("You have " + GameState.getSchilling()+ " Schillings \n");
-        }else if( sourse == propertiesBtn){
+        }else if( source == propertiesBtn){
             if(GameState.getPropertiesList() == null){
                 output.append("Need to load/new save file\n");
             } else{
@@ -82,26 +98,26 @@ public class MainJFrame extends JFrame implements ActionListener {
                 output.append("2        " + GameState.getPropertiesList().get(1).name + "      : " 
                 + (GameState.getPropertiesList().get(1).numProperties) + "\n");
             }
-        } else if(sourse == buyBtn){
+        } else if(source == buyBtn){
             if(GameState.getPropertiesList() == null){
                 output.append("Need to load/new save file\n");
             } else {
                 new BuyJFrame(); //will pop out to the buy menu frame
             }
-        } else if(sourse == sellBtn){
+        } else if(source == sellBtn){
             if(GameState.getPropertiesList() == null){
                 output.append("Need to load/new save file\n");
             } else {
                 new SellJFrame(); //will pop out to the sell menu frame 
             }
-        }else if (sourse == saveBtn){
+        }else if (source == saveBtn){
             String saveFile = JOptionPane.showInputDialog(this, "Enter save file name: ");
             if(saveFile != null && !saveFile.isEmpty()){
                 saveSystem.saveGame(GameState.getPropertiesList(), GameState.getSchilling(), 
                 saveFile);
             }
             output.append("Game is saved as " + saveFile + ".json\n");
-        }else if (sourse == loadBtn){
+        }else if (source == loadBtn){
             load = new JFileChooser();
             load.setCurrentDirectory(new File("data"));
             load.setFileFilter(new FileNameExtensionFilter("JSON files","json"));
@@ -122,49 +138,11 @@ public class MainJFrame extends JFrame implements ActionListener {
                 output.append("Loaded file: " + loadFile +"\n");
                 output.append("Money: " + money + "\n" );
             }
-        }else if(sourse == exitBtn){
+        }else if(source == exitBtn){
+            for (Event u : EventLog.getInstance()) {
+                System.out.println(u.getDate()+" : "+u.getDescription());
+            }
             System.exit(0);
         }
-    }
-
-    // the main menu has the current balance, rate of income, and a horizontally scrolling menu of all things money is being invested into.
-    // File has all the things related to saving and loading
-    // public void thing(){
-    //     JFrame frame = new JFrame("My First JFrame");
-    //     JLabel label = new JLabel("AAAAAAAAAAAAAAAA");
-    //     JButton button = new JButton("HI");
-    //     JMenuBar bar = new JMenuBar();
-    //     JMenu fileMenu = new JMenu("File");
-    //     JMenuItem quitItem = new JMenuItem("Quit Without Saving");
-    //     quitItem.setActionCommand("Q");
-    //     JMenuItem quitSaveItem = new JMenuItem("Quit and Save");
-    //     quitSaveItem.setActionCommand("SQ");
-    //     JMenuItem saveItem = new JMenuItem("Save");
-    //     saveItem.setActionCommand("S");
-    //     JMenuItem loadItem = new JMenuItem("Load");
-    //     loadItem.setActionCommand("L");
-    //     fileMenu.add(quitItem);
-    //     fileMenu.add(quitSaveItem);
-    //     fileMenu.add(saveItem);
-    //     fileMenu.add(loadItem);
-    //     bar.add(fileMenu);
-    //     frame.setJMenuBar(bar);
-    //     quitItem.addActionListener(this);
-    //     loadItem.addActionListener(this);
-    //     saveItem.addActionListener(this);
-    //     quitSaveItem.addActionListener(this);
-    //     button.setBounds(200,200,200,100);
-    //     frame.add(label);
-    //     frame.setSize(800,600); 
-    //     frame.add(button);
-    //     frame.setLayout(null);
-    //     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    //     frame.setVisible(true);
-
-
-
-    // }
-
-
-    
+    }    
 }

@@ -2,9 +2,9 @@ package com.cosc210.models.state;
 
 import java.util.ArrayList;
 
-import com.cosc210.models.FullOwnerShip;
+import com.cosc210.models.Event;
+import com.cosc210.models.EventLog;
 import com.cosc210.models.GameProperties;
-import com.cosc210.models.ParcOwnerShip;
 import com.cosc210.ui.MainJFrame;
 
 public class GameState{
@@ -21,10 +21,7 @@ public class GameState{
         //     consoleDisplay.printMainMenu();
         // }
         // in.close();
-        Schilling = 100000;
-        propertiesList = new ArrayList<>();
-        propertiesList.add(new ParcOwnerShip(100, "Badcompany", 1));
-        propertiesList.add(new FullOwnerShip(10, 0, "BadHouse"));
+        initilize();
         new MainJFrame();
     }
 /* 
@@ -50,6 +47,9 @@ public class GameState{
     public void init(){
         Schilling = 0; propertiesList = new ArrayList<>(); fileName = "";
     }
+    public static void initilize(){
+        Schilling = 0; propertiesList = new ArrayList<>(); fileName = "";
+    }
 
     public static ArrayList<GameProperties> getPropertiesList() {
         return propertiesList;
@@ -65,7 +65,10 @@ public class GameState{
     }
 
     public static void moneyChange(double money){
+        double i = Schilling;
         Schilling += money;
+        EventLog.getInstance().logEvent(new Event("Money set to "+Schilling+" from "+i));
+
     }
     //i am aware only one of these is needed, but i like readability
 

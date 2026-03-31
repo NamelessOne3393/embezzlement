@@ -10,6 +10,8 @@ import java.util.Scanner;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.cosc210.models.Event;
+import com.cosc210.models.EventLog;
 import com.cosc210.models.FullOwnerShip;
 import com.cosc210.models.GameProperties;
 import com.cosc210.models.Loadable;
@@ -27,8 +29,10 @@ public class SaveState implements Loadable{
         saveThing.put("companies",arrayToJSON(properties));
         try {
             writeToDisk(saveThing, file);
-            System.out.print("SAVE PASSED");
-        }catch(IOException e){System.out.print("SAVE FAILED");}
+            EventLog.getInstance().logEvent(new Event("Load successfully saved"));
+        }catch(IOException e){
+            EventLog.getInstance().logEvent(new Event("Load failed to save"));
+        }
         return 0;
     }
 
@@ -51,6 +55,7 @@ public class SaveState implements Loadable{
         return companies;
 
     }
+    
 
 
 
@@ -60,8 +65,10 @@ public class SaveState implements Loadable{
         if (rawData != null){    
             JSONArray data = rawData.getJSONArray("companies");
             jsonToArray(thing, data);
+            EventLog.getInstance().logEvent(new Event("Save successfully loaded"));
             return rawData.getInt("money");
         }else{
+        EventLog.getInstance().logEvent(new Event("File does not exist, new save created."));
         return newGame(thing);
         }
 
